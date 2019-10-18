@@ -1,0 +1,18 @@
+MVC
+-Model : data, objet
+-Vue : (G)UI
+-Control
+
+
+
+Pourvoir avoir au moins l'un des 3
+	socket Si jeu, avoir du multi
+	DB JDBC
+	WebService restful
+
+
+Faire figurer des collecctions (liste d'utilisateurs, tableau associatif)
+
+
+
+
