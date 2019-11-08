@@ -15,6 +15,7 @@ Faire figurer des collecctions (liste d'utilisateurs, tableau associatif)
 
 Commentaires CDC : 
 	Faire des afin de
+	Préciser les besoins
 	BesoinS FonctionnelS
 
 
