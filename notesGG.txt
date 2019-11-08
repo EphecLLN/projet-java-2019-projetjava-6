@@ -13,6 +13,8 @@ Pourvoir avoir au moins l'un des 3
 
 Faire figurer des collecctions (liste d'utilisateurs, tableau associatif)
 
-
+Commentaires CDC : 
+	Faire des afin de
+	BesoinS FonctionnelS
 
 
