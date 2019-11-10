@@ -1,0 +1,90 @@
+CREATE TABLE "admin"."Offence" (
+	"userSignal" INTEGER NOT NULL,
+	"userFlagged" INTEGER NOT NULL,
+	"commentOffence" CHAR(250) NULL,
+	"place" INTEGER NOT NULL,
+	"parkingName" CHAR(50) NOT NULL,
+	"dateOffence" DATE NOT NULL
+) IN "system";
+^
+CREATE TABLE "admin"."User" (
+	"nameUser" CHAR(50) NOT NULL,
+	"firstNameUser" CHAR(50) NOT NULL,
+	"phoneUser" CHAR(15) NULL,
+	"mailUser" CHAR(100) NULL,
+	"plate" CHAR(9) NOT NULL,
+	"penality" INTEGER NULL,
+	"userId" INTEGER NOT NULL,
+	CONSTRAINT "name" PRIMARY KEY ( "nameUser" ASC, "firstNameUser" ASC, "userId" ASC )
+) IN "system";
+
+
+
+
+CREATE TABLE "admin"."Parking" (
+	"name" CHAR(50) NOT NULL UNIQUE,
+	"position" CHAR(100) NOT NULL,
+	"nbrPlace" INTEGER NOT NULL,
+	"type" CHAR(20) NOT NULL,
+	CONSTRAINT "name" PRIMARY KEY ( "name" ASC )
+) IN "system";
+
+
+CREATE TABLE "admin"."Place" (
+	"parkingName" CHAR(50) NOT NULL,
+	"numberPlace" INTEGER NOT NULL,
+	"booked" BINARY(1) NOT NULL,
+	CONSTRAINT "Parking+Id" PRIMARY KEY ( "parkingName" ASC, "numberPlace" ASC )
+) IN "system";
+
+
+CREATE TABLE "admin"."Reservation" (
+	"place" INTEGER NOT NULL,
+	"parkingName" CHAR(50) NOT NULL,
+	"userId" INTEGER NOT NULL,
+	"dateStart" DATE NOT NULL,
+	"dateEnd" DATE NOT NULL
+) IN "system";
+
+
+userSignal,userFlagged,commentOffence,place,parkingName,dateOffence
+1,2,Se gare sur 2 places,38,Baudoin 1er,2019-11-09
+0,2,Absence de vignette,14,Parking des Sciences,2019-10-30
+
+name,position,nbrPlace,type
+Baudoin 1er,Boulevard Baudoin 1er Louvain-la-Neuve,210,Gratuit
+Parking Agro,,91,UCL A3
+Parking Croix du Sud,Avenue Théodore Schwann Louvain-la-Neuve,120,UCL B
+Parking Cyclotron,Rue Louis de Geer Louvain-la-Neuve,75,UCL B
+Parking de Lauzelle,Boulevard de Lauzelle 61 Louvain-la-Neuve,180,Gratuit
+Parking des Sciences,Porte Lemaitre 6 Louvain-la-Neuve,80,UCL B
+Parking Euler,,89,UCL A3
+Parking Grand-Place,,300,UCL A1
+Parking Grand-Rue,,200,UCL A1
+Parking Halles,,86,UCL A1
+Parking Leclercq,Boulevard du Sud Louvain-la-Neuve,433,UCL A2
+Parking Les Serres,,90,UCL A3
+Parking Magritte,Avenue du Ciseau 10 Louvain-la-Neuve,60,UCL B
+Parking Montesquieu,,288,UCL A1
+Parking P14,Avenue Georges Lemaitre 39 Louvain-la-Neuve,90,UCL B
+Parking Rédimé,Porte Lemaitre 39 Louvain-la-Neuve,74,Gratuit
+Parking Sablon,,192,UCL A2
+Parking Sainte-barbe,Rue du Compas Louvain-la-Neuve,150,UCL B
+Parking Socrate,,198,UCL A1
+Parking Vinci,,104,UCL A3
+Parking Wallons,,230,UCL A2
+parking Zone Hocaille,Route de Longchamp 10 Louvain-la-Neuve,80,UCL B
+
+place,parkingName,userId,dateStart,dateEnd
+5,Parking Croix du Sud,1,2019-09-16,2020-06-25
+
+
+nameUser,firstNameUser,phoneUser,mailUser,plate,penality,userId
+admin,admin,(NULL),(NULL),1-GFP-497,0,0
+DE LEENER,Nathan,(NULL),he201742@students.ephec.be,1-ERR-174,2,2
+GORTZ,Gaetan,0478262700,he201732@students.ephec.be,87tx3,0,1
+
+
+
+
+

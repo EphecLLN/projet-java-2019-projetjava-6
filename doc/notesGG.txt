@@ -19,3 +19,9 @@ Commentaires CDC :
 	BesoinS FonctionnelS
 
 https://github.com/RWTH-EBC/AixLib/wiki/How-to:-Add-images-to-the-Wiki
+
+
+https://openclassrooms.com/fr/courses/626954-creez-votre-application-web-avec-java-ee/623973-introduction-a-mysql-et-jdbc
+https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql
+https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/26597-limitez-le-nombre-de-connexions
+
