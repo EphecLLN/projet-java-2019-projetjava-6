@@ -4,7 +4,10 @@
 package Projet6Parking;
 
 /**
- * @author he201732
+ * Classe permettant de gérer les places des parkings
+ * 
+ * @author Nathan DE LEENER - HE201742
+ * @version 2019/11/12
  *
  */
 public class Place {
