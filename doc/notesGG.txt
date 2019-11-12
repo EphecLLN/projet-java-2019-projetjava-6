@@ -25,3 +25,4 @@ https://openclassrooms.com/fr/courses/626954-creez-votre-application-web-avec-ja
 https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql
 https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/26597-limitez-le-nombre-de-connexions
 
+Classes réservztion : enlever les dates, décrementer le nombre de place dispo, ajouter methode libererplace et reincrementer
