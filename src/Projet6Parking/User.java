@@ -79,6 +79,19 @@ public class User {
 		this.penalty = penalty;
 	}
 	
+	//méthodes
+	
+	public void penalty(int nbPen) {
+		if((nbPen > 0) || (nbPen >= 3)) {
+			penalty = nbPen;
+			System.out.println("Il vous reste "+(3-nbPen)+"chance(s).");
+		}
+		else if(nbPen > 3) {
+			penalty = nbPen;
+			System.out.println("Vous avez plus accés au réservation.");
+		}
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -86,5 +99,4 @@ public class User {
 		// TODO Auto-generated method stub
 
 	}
-//test  commit
 }
