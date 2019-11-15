@@ -7,7 +7,7 @@ package Projet6Parking;
  * Classe permettant de définir des parkings et les méthodes qui leurs sont associé
  * 
  * @author Nathan DE LEENER - HE201742
- * @version 2019/11/12
+ * @version 2019/11/14
  *
  */
 public class Parking {
@@ -15,7 +15,9 @@ public class Parking {
 	//Variables d'instance
 	
 	private String position;
-	private int nbrPlaces;
+	private int placesTot;
+	private int placesDispo;
+	
 	//Constructeur(s)
 	
 	/**
@@ -26,7 +28,8 @@ public class Parking {
 	 */
 	public Parking(String position, int nbrPlace) {
 		this.position = position;
-		this.nbrPlaces = nbrPlace;
+		this.placesTot = nbrPlace;
+		this.placesDispo = nbrPlace;
 	}
 	
 	
@@ -45,30 +48,81 @@ public class Parking {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-
-	/**
-	 * @return the nbrPlace
-	 */
-	public int getNbrPlace() {
-		return nbrPlaces;
-	}
 	
 	/**
-	 * @param nbrPlace the nbrPlace to set
+	 * @return the placesTot
 	 */
-	public void setNbrPlace(int nbrPlaces) {
-		this.nbrPlaces = nbrPlaces;
+	public int getPlacesTot() {
+		return placesTot;
 	}
+
+
+	/**
+	 * @param placesTot the placesTot to set
+	 */
+	public void setPlacesTot(int placesTot) {
+		this.placesTot = placesTot;
+	}
+
+	/**
+	 * @return the placesDispo
+	 */
+	public int getPlacesDispo() {
+		return placesDispo;
+	}
+
+	/**
+	 * @param placesDispo the placesDispo to set
+	 */
+	public void setPlacesDispo(int placesDispo) {
+		this.placesDispo = placesDispo;
+	}
+
 	
 	//Méthodes
 	
 	/**
 	 * Retourne le nombre de places disponibles
 	 * 
-	 * @return nbrLibre : Le nombre de places disponibles
+	 * @return Le nombre de places disponibles
 	 */
 	public int placeAvail() {
-		return 0;
+		return placesDispo;
+	}
+	
+	/**
+	 * Ajoute un nombre défini de places au parking
+	 * 
+	 * @param nouvPlaces : Nombre de place à ajouter au parking
+	 * @return Le parking modifié en terme de nombre total de places et de places disponibles
+	 */
+	public void addPlace(int nouvPlaces) {
+		if (nouvPlaces > 0) {
+			placesTot += nouvPlaces;
+			placesDispo += nouvPlaces;
+		}
+	}
+	
+	/**
+	 * Supprime un nombre défini de places au parking
+	 * 
+	 * @param suppPlaces : Nombre de places à supprimer du parking
+	 * @return Le parking modifié en terme de nombre total de places et de places disponibles
+	 */
+	public void deletePlace(int suppPlaces) {
+		if (suppPlaces > 0) {
+			placesTot -= suppPlaces;
+			placesDispo -= suppPlaces;
+		}
+	}
+	
+	/**
+	 * Retourne la localisation du parking
+	 * 
+	 * @return La localisation du parking
+	 */
+	public String localisation() {
+		return position;
 	}
 
 	/**
