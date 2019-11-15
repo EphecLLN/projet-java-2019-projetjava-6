@@ -6,4 +6,5 @@
  *
  */
 module ProjetJava6 {
+	requires org.junit.jupiter.api;
 }

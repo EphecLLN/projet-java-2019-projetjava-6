@@ -17,7 +17,7 @@ public class Offence {
 	int idOffence; //géré par db
 	User userSignal;
 	User userFlagged;
-	String comment;
+	String comment; //maximum 250 caractères (SQL)
 	Place place;
 	Date date;
 	
@@ -94,7 +94,15 @@ public class Offence {
 	 * @param comment the comment to set
 	 */
 	public void setComment(String comment) {
+		if(comment.length()>250) {
+			String shortComment="";
+			for(int i=0; i<250; i++) {
+				shortComment+=comment.charAt(i);
+			}
+		}
+		else {
 		this.comment = comment;
+		}
 	}
 
 	/**
