@@ -1,0 +1,20 @@
+Avancer sur la DB
+Dans la classe réservation : ne pas mettre des dates
+Dans la classe réservation : commentaires getter et setter automatique
+Dans la classe user : Initialiser lors de la création d'un User la variable penalité à 0
+
+Dans la classe User : créer  des méthodes pour créer une offence, une réservation, finir une réservation
+
+Dans toutes les classes, dans le main, créer des Objets afin de pouvoir faire des test consoles
+Mettre des commentaires sur les variables d'instances en réf avec la DB
+Ajout import java.sql.*;
+
+Supprimer le set en lien avec le boulot de la DB
+
+
+UML
+Parking : ajout name
+Place : ajout Parking name;
+Place ajout idDB
+
+
