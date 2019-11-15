@@ -3,7 +3,7 @@
  */
 package Projet6Parking;
 
-//import date de la bdd
+import java.util.Date;
 
 /**
  * @author he201732
@@ -11,7 +11,7 @@ package Projet6Parking;
  */
 public class Reservation {
 	
-	//propriétés
+	//propriÃ©tÃ©s
 	private Place place;
 	private User user;
 	private Date dateStart;
