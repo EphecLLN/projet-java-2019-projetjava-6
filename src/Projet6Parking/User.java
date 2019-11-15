@@ -4,12 +4,12 @@
 package Projet6Parking;
 
 /**
- * @author he201732
+ * @author he201676
  *
  */
 public class User {
 	
-	//propriétés
+	//propriÃ©tÃ©s
 	private String name;
 	private String firstname;
 	private String phone;
@@ -60,14 +60,14 @@ public class User {
 	//constructeurs
 	
 	/**
-	 * constructeur de l'objet User, les différents utilisateurs de l'application
+	 * constructeur de l'objet User, les diffÃ©rents utilisateurs de l'application
 	 * 
 	 * @param name : nom de l'utilisateur
-	 * @param firstname : son prénom
-	 * @param phone : son numéro de téléphone
+	 * @param firstname : son prÃ©nom
+	 * @param phone : son numÃ©ro de tÃ©lÃ©phone
 	 * @param mail : son email
-	 * @param plate : la plaque d'immatriculation de son véhicule
-	 * @param penalty : le nombre de fraude que l'utilisateur a reçu
+	 * @param plate : la plaque d'immatriculation de son vÃ©hicule
+	 * @param penalty : le nombre de fraude que l'utilisateur a reÃ§u
 	 */
 	public User(String name, String firstname, String phone, String mail,
 			String plate,int penalty) {
