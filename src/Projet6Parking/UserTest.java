@@ -8,9 +8,9 @@ class UserTest {
 
 	@Test
 	void testPenalty() {
-		User test1 = new User("Luk", "Brian", "047768985", "he201676@hotmail.com", "A32FE");
+		User test1 = new User(1, "Luk", "Brian", "047768985", "he201676@hotmail.com", "A32FE");
 		assertEquals(0, test1.getPenalty());
-		User test2 = new User("Luk", "Brian", "047768985", "he201676@hotmail.com", "A32FE");
+		User test2 = new User(2, "Luk", "Brian", "047768985", "he201676@hotmail.com", "A32FE");
 		test2.setPenalty(5);
 		assertEquals(5, test2.getPenalty());
 	}

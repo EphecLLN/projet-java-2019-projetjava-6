@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Projet6Parking;
 
 /**
@@ -8,80 +5,138 @@ package Projet6Parking;
  *
  */
 public class User {
-	
-	//propriÃ©tÃ©s
-	private int userId;
-	private String name;
-	private String firstname;
-	private String phone;
-	private String mail;
-	private String plate;
-	private int penalty;
-	
-	//getters
-	public String getName() {
-		return name;
-	}
-	public String getFirstName() {
-		return firstname;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public String getMail() {
-		return mail;
-	}
-	public String getPlate() {
-		return plate;
-	}
-	public int getPenalty() {
-		return penalty;
-	}
-	
-	//setters
-	public void setName(String name) {
-		this.name = name;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-	public void setPlate(String plate) {
-		this.plate = plate;
-	}
-	public void setPenalty(int penalty) {
-		this.penalty = penalty;
-	}
 
-	//constructeurs
+	//Variables d'instance
+	private int idUser; //Ajout pour pouvoir faire le lien avec la DB
+	private String name; //Nom de l'utilisateur
+	private String firstName;  //Prénom de l'utilisateur
+	private String phone; //Téléphone de l'utilisateur
+	private String mail; //Mail de l'utilisateur
+	private String plate; //Plaque de la voiture de l'utilisateur
+	private int penalty; //Nombre de pénalité de l'utilisateur
 	
-	/**
-	 * constructeur de l'objet User, les diffÃ©rents utilisateurs de l'application
+	//Constructeur
+	/**Constructeur de l'objet User, les différents utilisateurs de l'application
 	 * 
+	 * @param idUser : l'id de l'utilisateur
 	 * @param name : nom de l'utilisateur
-	 * @param firstname : son prÃ©nom
-	 * @param phone : son numÃ©ro de tÃ©lÃ©phone
-	 * @param mail : son email
-	 * @param plate : la plaque d'immatriculation de son vÃ©hicule
+	 * @param firstName : prénom de l'utilisateur
+	 * @param phone : numéro de téléphone de l'utilisateur
+	 * @param mail : email de l'utilisateur
+	 * @param plate : la plaque d'immatriculation du véhicule de l'utilisateur
 	 */
-	public User(int userId, String name, String firstname, String phone, String mail,
-			String plate) {
-		this.userId = userId;
+	public User(int idUser, String name, String firstName, String phone, String mail, String plate) {
+		this.idUser = idUser;
 		this.name = name;
-		this.firstname = firstname;
+		this.firstName = firstName;
 		this.phone = phone;
 		this.mail = mail;
 		this.plate = plate;
 		this.penalty = 0;
 	}
 	
-	//methodes
 	
+	//Getters & Setters
+	/**
+	 * @return the idUser
+	 */
+	public int getidUser() {
+		return idUser;
+	}
+
+	/**
+	 * @param idUser the idUser to set
+	 */
+	public void setidUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getfirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setfirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
+
+	/**
+	 * @param phone the phone to set
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	/**
+	 * @return the mail
+	 */
+	public String getMail() {
+		return mail;
+	}
+
+	/**
+	 * @param mail the mail to set
+	 */
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	/**
+	 * @return the plate
+	 */
+	public String getPlate() {
+		return plate;
+	}
+
+	/**
+	 * @param plate the plate to set
+	 */
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
+
+	/**
+	 * @return the penalty
+	 */
+	public int getPenalty() {
+		return penalty;
+	}
+
+	/**
+	 * @param penalty the penalty to set
+	 */
+	public void setPenalty(int penalty) {
+		this.penalty = penalty;
+	}
+
+	
+	//Méthodes
 	public void penalty(int nbPen) {
 		if((nbPen > 0) || (nbPen <= 3)) {
 			penalty = nbPen;
@@ -93,6 +148,8 @@ public class User {
 		}
 	}
 	
+	
+	
 	/**
 	 * @param args
 	 */
@@ -100,8 +157,12 @@ public class User {
 
 	}
 	
-	
+	/**
+	 * Retourne un utilisateur sous forme de String pour un affichage console
+	 * 
+	 * @return l'utilisateur avec ses données
+	 */
 	public String toString() {
-		return this.userId + " " + this.name;
+		return "id : " + this.idUser + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
 	}
 }

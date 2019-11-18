@@ -1,7 +1,7 @@
-/** Ceci est la classe Offence qui reprï¿½sente une infraction dans l'utilisation des parkings.
- * Chaque Offence se voit attribuï¿½ un numï¿½ro unique afin de pouvoir identifier facilement les objets
- * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de dï¿½crire le dï¿½lit
- * Une Offence se rï¿½fï¿½re ï¿½ une Place et donc ï¿½ un Parking, ainsi qu'une date
+/** Ceci est la classe Offence qui représente une infraction dans l'utilisation des parkings.
+ * Chaque Offence se voit attribuée un numéro unique afin de pouvoir identifier facilement les objets
+ * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de décrire le délit
+ * Une Offence se référe a une Place et donc a un Parking, ainsi qu'une date
  * 
  * 
  * @author gaeta_2b6psqs
@@ -9,27 +9,29 @@
  */
 
 package Projet6Parking;
-
 import java.util.Date;
 
 
 public class Offence {
-	int idOffence; //gï¿½rï¿½ par db
-	User userSignal;
-	User userFlagged;
-	String comment; //maximum 50 caractï¿½res (SQL)
-	Place place;
-	Date date;
 	
+	//Variable d'instance
+	int idOffence; //l'id de l'offence dans la DB
+	User userSignal; //l'utilisateur qui signale l'infraction
+	User userFlagged; //l'utilisateur qui commet l'infraction
+	String comment; //la description de l'infraction maximum 50 caractères (SQL)
+	Place place; //la place sur laquelle l'infraction a lieu
+	Date date; //la date a laquelle l'infraction a lieu
 	
+	//Constructeur
 	/**
 	 * Ceci est le constructeur d'un objet Offence
 	 * 
+	 * @param idOffence l'id de l'offence de la DB
 	 * @param signal le User qui signale l'infraction
 	 * @param flag le User qui a comis l'infraction
-	 * @param com le commentaire sur l'infraction
-	 * @param p la Place de Parking oï¿½ ï¿½ eu lieue l'infraction
-	 * @param d la Date ï¿½ laquelle l'infraction ï¿½ eu lieue
+	 * @param com le commentaire sur l'infraction (max 50caracteres)
+	 * @param p la Place de Parking ou a eu lieue l'infraction
+	 * @param d la Date a laquelle l'infraction a eu lieue
 	 */
 	public Offence(int idOffence, User signal, User flag, String com, Place p, Date d) {
 		this.idOffence = idOffence;
@@ -50,7 +52,7 @@ public class Offence {
 	}
 	
 
-	
+	//Getters & Setters
 	/**
 	 * @return the idOffence
 	 */
@@ -146,7 +148,7 @@ public class Offence {
 
 	
 	
-	
+	//Méthodes
 	
 	/**
 	 * @param args
@@ -154,6 +156,15 @@ public class Offence {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	/**
+	 * Retourne une offence sous forme de String pour l'afficher en console
+	 * 
+	 * @return une offence et ses données
+	 */
+	public String toString() {
+		return "Offence N° " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date;
 	}
 
 }
