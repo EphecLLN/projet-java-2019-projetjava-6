@@ -18,3 +18,14 @@ Place : ajout Parking name;
 Place ajout idDB
 
 
+
+
+GG	User les 3 méthodes supplémentaires
+	Avancer db
+
+ND	Main avec les données
+	UML
+
+BL	Corriger reservation
+
+
