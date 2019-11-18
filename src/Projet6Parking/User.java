@@ -81,16 +81,16 @@ public class User {
 		this.penalty = 0;
 	}
 	
-	//méthodes
+	//methodes
 	
 	public void penalty(int nbPen) {
-		if((nbPen > 0) || (nbPen >= 3)) {
+		if((nbPen > 0) || (nbPen <= 3)) {
 			penalty = nbPen;
 			System.out.println("Il vous reste "+(3-nbPen)+"chance(s).");
 		}
 		else if(nbPen > 3) {
 			penalty = nbPen;
-			System.out.println("Vous avez plus accés au réservation.");
+			System.out.println("Vous avez plus acces au reservation.");
 		}
 	}
 	
