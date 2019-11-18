@@ -11,11 +11,10 @@ import java.util.Date;
  */
 public class Reservation {
 	
-	//propriétés
+	//propriï¿½tï¿½s
+	private int idPlace;
 	private Place place;
 	private User user;
-	private Date dateStart;
-	private Date dateEnd;
 	
 	//getters 
 	public Place getPlace() {
@@ -23,12 +22,6 @@ public class Reservation {
 	}
 	public User getUser() {
 		return user;
-	}
-	public Date getDateStart() {
-		return dateStart;
-	}
-	public Date getDateEnd() {
-		return dateEnd;
 	}
 	
 	//setters
@@ -38,20 +31,13 @@ public class Reservation {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public void setDateStart(Date dateStart) {
-		this.dateStart = dateStart;
-	}
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
-	}
-	
+
 	//constructeurs
 	
-	public Reservation(Place place, User user, Date dateS, Date dateE) {
+	public Reservation(int idPlace, Place place, User user) {
+		this.idPlace = idPlace;
 		this.place = place;
 		this.user = user;
-		this.dateStart = dateS;
-		this.dateEnd = dateE;
 	}
 
 	/**

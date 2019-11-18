@@ -10,7 +10,7 @@ package Projet6Parking;
 public class User {
 	
 	//propriétés
-	private static int userId;
+	private int userId;
 	private String name;
 	private String firstname;
 	private String phone;
@@ -69,10 +69,9 @@ public class User {
 	 * @param mail : son email
 	 * @param plate : la plaque d'immatriculation de son véhicule
 	 */
-	public User(String name, String firstname, String phone, String mail,
+	public User(int userId, String name, String firstname, String phone, String mail,
 			String plate) {
 		this.userId = userId;
-		userId++; //incr�mentation de l'id
 		this.name = name;
 		this.firstname = firstname;
 		this.phone = phone;
@@ -98,13 +97,6 @@ public class User {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		userId=0;
-		User u1 = new User("Gortz1", "Gaetan", "0478262700", "he201732@students.ephec.be", "87tx3");
-		System.out.println(u1);
-		User u2 = new User("Gortz2", "Gaetan", "0478262700", "he201732@students.ephec.be", "87tx3");
-		User u3 = new User("Gortz3", "Gaetan", "0478262700", "he201732@students.ephec.be", "87tx3");
-		System.out.println(u2);
-		System.out.println(u3);
 
 	}
 	

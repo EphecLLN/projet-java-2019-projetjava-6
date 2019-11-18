@@ -16,16 +16,16 @@ public class Place {
 	
 	private int dbId;			//Numero global de la place dans la DB
 	private int number;			//Numero de la place dans le parking
-	private int parkingId;		//Numero du parking
+	private Parking parking;	//Parking auquel la place appartient
 	private boolean booked;		//Etat de la reservation de la place 
 	
 	
 	//Constructeur(s)
 	
-	public Place(int dbId, int number, int parkingId) {
+	public Place(int dbId, Parking parking, int number) {
 		this.dbId = dbId;
 		this.number = number;
-		this.parkingId = parkingId;
+		this.parking = parking;
 		this.booked = false;
 	}
 
@@ -49,15 +49,15 @@ public class Place {
 	/**
 	 * @return the parkingId
 	 */
-	public int getParkingId() {
-		return parkingId;
+	public Parking getParkingId() {
+		return parking;
 	}
 
 	/**
 	 * @param parkingId the parkingId to set
 	 */
-	public void setParkingId(int parkingId) {
-		this.parkingId = parkingId;
+	public void setParkingId(Parking parking) {
+		this.parking = parking;
 	}
 
 	/**
@@ -81,17 +81,19 @@ public class Place {
 		return booked;
 	}
 	
+	/*
 	/**
 	 * 
 	 * @param dbId
 	 * @return
-	 */
+	 *
 	public Place getPlace(int dbId) {
 		// Requete SQL : SELECT "var_instance_place" FROM "Place" WHERE "idPlace" = "dbId"
 		// Traitement des resultats pour creer un objet Place
 		Place r = new Place(dbId, dbId, dbId);		//int venant du traitement fait à la ligne precedente
 		return r;
 	}
+	*/
 	
 	/**
 	 * @param args

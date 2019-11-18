@@ -1,7 +1,7 @@
-/** Ceci est la classe Offence qui représente une infraction dans l'utilisation des parkings.
- * Chaque Offence se voit attribué un numéro unique afin de pouvoir identifier facilement les objets
- * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de décrire le délit
- * Une Offence se référe à une Place et donc à un Parking, ainsi qu'une date
+/** Ceci est la classe Offence qui reprï¿½sente une infraction dans l'utilisation des parkings.
+ * Chaque Offence se voit attribuï¿½ un numï¿½ro unique afin de pouvoir identifier facilement les objets
+ * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de dï¿½crire le dï¿½lit
+ * Une Offence se rï¿½fï¿½re ï¿½ une Place et donc ï¿½ un Parking, ainsi qu'une date
  * 
  * 
  * @author gaeta_2b6psqs
@@ -14,10 +14,10 @@ import java.util.Date;
 
 
 public class Offence {
-	int idOffence; //géré par db
+	int idOffence; //gï¿½rï¿½ par db
 	User userSignal;
 	User userFlagged;
-	String comment; //maximum 50 caractères (SQL)
+	String comment; //maximum 50 caractï¿½res (SQL)
 	Place place;
 	Date date;
 	
@@ -28,10 +28,11 @@ public class Offence {
 	 * @param signal le User qui signale l'infraction
 	 * @param flag le User qui a comis l'infraction
 	 * @param com le commentaire sur l'infraction
-	 * @param p la Place de Parking où à eu lieue l'infraction
-	 * @param d la Date à laquelle l'infraction à eu lieue
+	 * @param p la Place de Parking oï¿½ ï¿½ eu lieue l'infraction
+	 * @param d la Date ï¿½ laquelle l'infraction ï¿½ eu lieue
 	 */
-	public Offence(User signal, User flag, String com, Place p, Date d) {
+	public Offence(int idOffence, User signal, User flag, String com, Place p, Date d) {
+		this.idOffence = idOffence;
 		userSignal = signal;
 		userFlagged =flag;
 		if(com.length()>50) {
