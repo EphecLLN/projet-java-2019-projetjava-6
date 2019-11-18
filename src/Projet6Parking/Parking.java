@@ -167,5 +167,5 @@ public class Parking {
 		return "Parking N° : " + this.idParking + ", nom : " + this.name + " situé " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
 	}
 	
-
+  
 }
