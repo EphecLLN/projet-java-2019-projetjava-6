@@ -1,6 +1,7 @@
 
 -- Creation de la db
 CREATE DATABASE Parking;  
+-- testPush
 
 -- Creation d un utilisateur admin ayant tout les droits
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'mdpadmin';
