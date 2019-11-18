@@ -1,4 +1,5 @@
 package Projet6Parking;
+import java.util.*;
 
 /**
  * @author he201676
@@ -147,6 +148,101 @@ public class User {
 			System.out.println("Vous avez plus acces au reservation.");
 		}
 	}
+	
+	/**
+	 * Ajoute une pénalité à l'utilisteur
+	 */
+	public void addPenalty() {
+		this.setPenalty(this.getPenalty()+1);
+		if(this.getPenalty()>=3) {
+			System.out.println("Vous avez trop d'infractions");
+		}
+	}
+	
+	/**
+	 * Permet de réserver une place de parking
+	 * 
+	 * @param p La place que l'utilisateur veut réserver
+	 */
+	public void reserve(Place p) {
+		if(p.isBooked()) {
+			System.out.println("La place est déjà prise");
+		}
+		else {
+		Reservation r = new Reservation(1, p, this);
+		Parking pa = p.getParking();
+		pa.setPlacesDispo(pa.getPlacesDispo()-1);
+		}
+	}
+	
+	/**
+	 * Permet de libérer une place de parking
+	 * @param p La palce qu'on veut libérer
+	 */
+	public void liberePlace(Place p) {
+		if(p.isFree()) {
+			System.out.println("La place n'est pas réservée");
+		}
+		/*
+		 * vérifier si la réservation est bien à l'utilisateur
+		 */
+		else {
+			Parking pa = p.getParking();
+			pa.setPlacesDispo(pa.getPlacesDispo()+1);
+			p.setBooked(true);
+		}
+	}
+	
+	/**
+	 * Permet d'arreter une réservation
+	 * 
+	 * @param r la réservation qui est finie
+	 */
+	public void libereReservation(Reservation r) {
+		Place pl = r.getPlace();
+		Parking pa = pl.getParking();
+		if(r.getUser()!=this) {
+			System.out.println("Vous ne pouvez pas libérer une place que vous n'avez pas réservée");
+		}
+		if(pl.isFree()) {
+			System.out.println("La place n'est pas réservée");
+		}
+		else {
+			pa.setPlacesDispo(pa.getPlacesDispo()+1);
+			pl.setBooked(false);
+		}
+	}
+	
+	/**
+	 * Permet de signaler un utilisateur
+	 * 
+	 * @param pl la place ou à lieu l'infraction
+	 * @param com la raison de l'infraction
+	 */
+	public void flagV1(Place pl, String com) {
+		Date d = new Date();
+		//Aller chercher l'utilisateur
+		User userF = new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
+		Offence of = new Offence(1, this, userF, com, pl, d);
+		//Ajouter une penalite a l'utilisateur
+		userF.addPenalty();
+	}
+	
+	/**
+	 * Permet de signaler un utilisateur
+	 * 
+	 * @param r la reservation ou à lieu l'infraction
+	 * @param com la raison de l'infraction
+	 */
+	public void flagV2(Reservation r, String com) {
+		Place pl = r.getPlace();
+		Date d = new Date();
+		User userF = r.getUser();
+		Offence of = new Offence(1, this, userF, com, pl, d);
+		userF.addPenalty();
+	}
+	
+	
 	
 	
 	

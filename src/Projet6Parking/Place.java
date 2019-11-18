@@ -48,14 +48,14 @@ public class Place {
 	/**
 	 * @return the parkingId
 	 */
-	public Parking getParkingId() {
+	public Parking getParking() {
 		return parking;
 	}
 
 	/**
-	 * @param parkingId the parkingId to set
+	 * @param parking the parking to set
 	 */
-	public void setParkingId(Parking parking) {
+	public void setParking(Parking parking) {
 		this.parking = parking;
 	}
 
