@@ -20,16 +20,16 @@ class OffenceTest {
 	 */
 	@Test
 	void testSetComment() {
-		User r=new User("Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3", 0);
-		User f=new User("Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497",1);
+		User r=new User("Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
+		User f=new User("Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
 		Place p = new Place(3,4,5);
 		Date d=new Date();
 		String commentLong="Intra reducti bellatores bellatores si quis insistebant moenia moenia ita quis se telaque bellatores telaque si reducti";
 		String commentCourt="Intra reducti bellatores bellatores si quis insist";
 		Offence test1 = new Offence(r, f, commentLong, p, d);
 		assertEquals(commentCourt,test1.getComment());
-		User r2=new User("Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3", 0);
-		User f2=new User("Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497",1);
+		User r2=new User("Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
+		User f2=new User("Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
 		Place p2 = new Place(3,4,5);
 		Date d2=new Date();
 		String commentLong2="Intra reducti bellatores bellatores si quis insistebant moenia moenia ita quis se telaque bellatores telaque si reducti";
