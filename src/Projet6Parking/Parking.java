@@ -156,6 +156,11 @@ public class Parking {
 		// Tests
 		//System.out.println(user1.getName() + " " + user1.getFirstname() + " " + user1.getMail() + " " + user1.getPhone() + " " + user1.getPlate() + " " + user1.getPenalty());
 		System.out.println(user1);
+		System.out.println(p1.getPlacesDispo());
+		user1.reserve(pl2);
+		System.out.println(p1.getPlacesDispo());
+		user1.liberePlace(pl2);
+		System.out.println(p1.getPlacesDispo());
 	}
 	
 	/**

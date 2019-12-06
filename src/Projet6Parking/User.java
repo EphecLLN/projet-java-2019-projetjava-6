@@ -170,6 +170,8 @@ public class User {
 		}
 		else {
 		Reservation r = new Reservation(1, p, this);
+		p.setBooked(true);
+			System.out.println(r);
 		Parking pa = p.getParking();
 		pa.setPlacesDispo(pa.getPlacesDispo()-1);
 		}
