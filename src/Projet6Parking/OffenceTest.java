@@ -22,7 +22,7 @@ class OffenceTest {
 	void testSetComment() {
 		User r=new User(1, "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
 		User f=new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
-		Parking test1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, "Gratuit");
+		Parking test1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		Place p = new Place(3, test1, 5);
 		Date d=new Date();
 		String commentLong="Intra reducti bellatores bellatores si quis insistebant moenia moenia ita quis se telaque bellatores telaque si reducti";
@@ -31,7 +31,7 @@ class OffenceTest {
 		assertEquals(commentCourt,test12.getComment());
 		User r2=new User(1, "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
 		User f2=new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
-		Parking test2 = new Parking(2, "Baudoin 1er", "Boulevard Baudoin Ier", 284, "Gratuit");
+		Parking test2 = new Parking(2, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		Place p2 = new Place(3, test2, 5);
 		Date d2=new Date();
 		String commentLong2="Intra reducti bellatores bellatores si quis insistebant moenia moenia ita quis se telaque bellatores telaque si reducti";

@@ -25,15 +25,16 @@ public class Parking {
 	 * @param idParking : Id du parking dans la DB
 	 * @param name : Nom du parking
 	 * @param position : Nom du lieu où se situe le parking
-	 * @param nbrPlace : Nombre de place disponible
+	 * @param nbrPlace : Nombre de place totale
+	 * @param nbrPlaceDisp : Nombre de place disponible
 	 * @param type : Type du parking
 	 */
-	public Parking(int idParking, String name, String position, int nbrPlace, String type) {
+	public Parking(int idParking, String name, String position, int nbrPlace, int nbrPlaceDisp, String type) {
 		this.idParking = idParking;
 		this.name = name;
 		this.position = position;
 		this.placesTot = nbrPlace;
-		this.placesDispo = nbrPlace;
+		this.placesDispo = nbrPlaceDisp;
 		this.type = type;
 	}
 
@@ -138,8 +139,8 @@ public class Parking {
 		User user2 = new User (1, "De Leener", "Nathan", "22222222", "n.deleener@students.ephec.be", "1-BBB-222");
 		User user3 = new User (2, "Luk", "Brian", "33333333", "b.luk@students.ephec.be", "1-CCC-333");
 		// Parkings
-		Parking p1 = new Parking (0, "Parking 1", "Localisation 1", 100, "Gratuit");
-		Parking p2 = new Parking (1, "Parking 2", "Localisation 2", 25, "Payant");
+		Parking p1 = new Parking (0, "Parking 1", "Localisation 1", 100, 100, "Gratuit");
+		Parking p2 = new Parking (1, "Parking 2", "Localisation 2", 25, 25, "Payant");
 		// Places
 		Place pl1 = new Place (0, p1, 1);
 		Place pl2 = new Place (1, p1, 2);
