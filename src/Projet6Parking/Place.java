@@ -29,7 +29,14 @@ public class Place {
 		this.booked = false;
 	}
 
-	
+	/**
+	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 */
+	public Place() {
+		idPlace=-1;
+	}
+
+
 	//Getters & Setters
 	/**
 	 * @return the idPlace
@@ -100,7 +107,7 @@ public class Place {
 	 * @return une place sous forme de String
 	 */
 	public String toString() {
-		return "Place N° : " + this.number + " du parking : " + this.parking + " est prise : " + this.booked;
+		return "Place N° : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
 	}
 
 }

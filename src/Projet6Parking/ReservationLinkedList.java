@@ -93,7 +93,7 @@ public class ReservationLinkedList {
 		String retour="";
 		Node parcours=first;
 		while(parcours!=last) {
-			retour+=parcours.reservation.toString();
+			retour+=parcours.reservation.toString()+"\n";
 			parcours=parcours.next;
 		}
 		retour+=parcours.reservation.toString();

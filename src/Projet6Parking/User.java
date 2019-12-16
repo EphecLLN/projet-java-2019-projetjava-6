@@ -36,6 +36,14 @@ public class User {
 		this.penalty = 0;
 	}
 	
+	/**
+	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 */
+	public User() {
+		this.idUser=-1;
+		this.firstName="";
+	}
+	
 	
 	//Getters & Setters
 	/**

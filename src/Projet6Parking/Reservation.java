@@ -89,7 +89,7 @@ public class Reservation {
 	 * @return Une reservation sous forme de String
 	 */
 	public String toString() {
-		return "Reservation N° : " + this.idReservation + ", place : " + this.place + ", utilisateur : " + this.user;
+		return "Reservation N° : " + this.idReservation + ",\n\t place : [" + this.place + "],\n\t utilisateur : [" + this.user + "]";
 	}
 
 }
