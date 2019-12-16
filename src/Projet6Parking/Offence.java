@@ -18,7 +18,7 @@ public class Offence {
 	int idOffence; //l'id de l'offence dans la DB
 	User userSignal; //l'utilisateur qui signale l'infraction
 	User userFlagged; //l'utilisateur qui commet l'infraction
-	String comment; //la description de l'infraction maximum 50 caract�res (SQL)
+	String comment; //la description de l'infraction maximum 50 caracteres (SQL)
 	Place place; //la place sur laquelle l'infraction a lieu
 	Date date; //la date a laquelle l'infraction a lieu
 	
@@ -148,7 +148,7 @@ public class Offence {
 
 	
 	
-	//M�thodes
+	//Methodes
 	
 	/**
 	 * @param args
