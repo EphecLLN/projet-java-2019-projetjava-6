@@ -5,4 +5,5 @@
 module ProjetJava6 {
 	requires org.junit.jupiter.api;
 	requires java.sql;
+	requires java.desktop;
 }
