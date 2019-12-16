@@ -117,7 +117,6 @@ public class Parking {
 	 * Ajoute un nombre defini de places au parking
 	 * 
 	 * @param nouvPlaces : Nombre de place a ajouter au parking
-	 * @return Le parking modifie en terme de nombre total de places et de places disponibles
 	 */
 	public void addPlace(int nouvPlaces) {
 		if (nouvPlaces > 0) {
@@ -130,7 +129,6 @@ public class Parking {
 	 * Supprime un nombre defini de places au parking
 	 * 
 	 * @param suppPlaces : Nombre de places a supprimer du parking
-	 * @return Le parking modifie en terme de nombre total de places et de places disponibles
 	 */
 	public void deletePlace(int suppPlaces) {
 		if (suppPlaces > 0) {
@@ -146,15 +144,6 @@ public class Parking {
 	 */
 	public String localisation() {
 		return position;
-	}
-
-	
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
 	}
 	
 	/**

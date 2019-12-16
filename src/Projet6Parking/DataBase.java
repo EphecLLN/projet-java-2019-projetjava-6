@@ -512,7 +512,7 @@ public class DataBase {
 //---A TRIER---
 	/**
 	 * Ajoute une p�nalit� � l'utilisateur donn�
-	 * @param idUser
+	 * @param idUser 
 	 */
 	public static void addPenalty(int idUser) {
 		//TODO addpenalit�
@@ -544,7 +544,7 @@ public class DataBase {
 //---MAIN---
 	/**
 	 * Permet de tester les diff�rentes m�thodes au-dessus
-	 * @param args
+	 * @param args 
 	 */
 	public static void main(String[] args) {
 		initialisationDonnees();

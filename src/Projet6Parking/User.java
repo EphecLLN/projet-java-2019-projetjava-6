@@ -17,17 +17,19 @@ public class User {
 	private String phone; //Telephone de l'utilisateur
 	private String mail; //Mail de l'utilisateur
 	private String plate; //Plaque de la voiture de l'utilisateur
-	private int penalty; //Nombre de pï¿½nalitï¿½ de l'utilisateur
+	private int penalty; //Nombre de penalite de l'utilisateur
 	
 	//Constructeur
-	/**Constructeur de l'objet User, les diffï¿½rents utilisateurs de l'application
+	/**Constructeur de l'objet User, les differents utilisateurs de l'application
 	 * 
 	 * @param idUser : l'id de l'utilisateur
+	 * @param username : le nom d'utilisateur
+	 * @param mdp : le mot de passe
 	 * @param name : nom de l'utilisateur
 	 * @param firstName : Prenom de l'utilisateur
 	 * @param phone : numero de telephone de l'utilisateur
 	 * @param mail : email de l'utilisateur
-	 * @param plate : la plaque d'immatriculation du vï¿½hicule de l'utilisateur
+	 * @param plate : la plaque d'immatriculation du vehicule de l'utilisateur
 	 */
 	public User(int idUser, String username, String mdp, String name, String firstName, String phone, String mail, String plate) {
 		this.idUser = idUser;
@@ -232,10 +234,10 @@ public class User {
 	
 	/**
 	 * Permet de reserver une place de parking
-	* @param p Le parking dans lequel l'utilisateur veut réserver
+	* @param p Le parking dans lequel l'utilisateur veut rï¿½server
 	*/
 	public void reserve(Parking p) {
-		//vérif si encore place dispo
+		//vï¿½rif si encore place dispo
 		if(p.getPlacesDispo()<1) {
 			System.out.println("Plus de place disponible");
 		}
@@ -261,7 +263,7 @@ public class User {
 			System.out.println("La place n'est pas reservee");
 		}
 		/*
-		 * verifier si la reservation est bien à l'utilisateur
+		 * verifier si la reservation est bien ï¿½ l'utilisateur
 		 */
 		else {
 			Parking pa = p.getParking();
@@ -320,22 +322,12 @@ public class User {
 	}
 	
 	
-	
-	
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-
-	}
-	
 	/**
 	 * Retourne un utilisateur sous forme de String pour un affichage console
 	 * 
 	 * @return l'utilisateur avec ses donnees
 	 */
 	public String toString() {
-		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pï¿½nalitï¿½ : " + this.penalty;
 	}
 }

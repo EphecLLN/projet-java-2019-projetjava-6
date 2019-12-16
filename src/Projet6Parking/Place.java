@@ -104,16 +104,7 @@ public class Place {
 	public boolean isFree() {
 		return !booked;
 	}
-	
-	
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	/**
 	 * Retourne une place sous forme de String
