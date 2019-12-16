@@ -2,17 +2,23 @@ package Projet6Parking;
 
 
 /**
- * @author gaeta_2b6psqs
- *
+ * Structure chainee permettant d'enregistrer les modifications faites sur les reservations
+ * 
+ * @author GORTZ GaÃ«tan
+ * @version 2019-12-17
  */
 public class ReservationLinkedList {
 	
+	/**
+	 * Classe permettant de creer un Node necessaire a la structure chainee
+	 *
+	 */
 	private class Node{
 		private Reservation reservation;
 		private Node next;
 		
 		/**
-		 * Constructeur d'un noeud de la structure chainée de parking
+		 * Constructeur d'un noeud de la structure chainee de parking
 		 * @param p le parking
 		 */
 		public Node(Reservation r) {
@@ -21,11 +27,13 @@ public class ReservationLinkedList {
 		}
 	}
 	
-	private Node first; //Premier élément de la liste
-	private Node last; //Dernier élément de la liste
+	//Variables d'instance
+	private Node first; //Premier element de la liste
+	private Node last; //Dernier element de la liste
 	
+	//Methodes
 	/**
-	 * Crèe une liste chainée de reservation avec les premier et le dernier noeud a null
+	 * Cree une liste chainee de reservation avec les premier et le dernier noeud a null
 	 * Cette liste ne contient pas encore de reservation
 	 */
 	public ReservationLinkedList() {
@@ -34,20 +42,20 @@ public class ReservationLinkedList {
 	}
 	
 	/**
-	 * Ajoute une réservation à la fin de la structure chainée
-	 * @param r la réservation à ajouter dans la structure
+	 * Ajoute une reservation a la fin de la structure chainee
+	 * @param r la reservation a ajouter dans la structure
 	 */
 	public void enqueue(Reservation r) {
 		Node newNode = new Node(r);
-		if(isEmpty()) { //Si pas d'élément dans la structure => le nouveau noeud est le premier et le dernier
+		if(isEmpty()) { //Si pas d'element dans la structure => le nouveau noeud est le premier et le dernier
 			first = newNode;
 			last = newNode;
 		}
-		else if(first==last) { //s'il y a un seul élément
+		else if(first==last) { //s'il y a un seul element
 			first.next=newNode;
 			last=newNode;
 		}
-		else { //S'il y a plus d'un élément on le met a la fin
+		else { //S'il y a plus d'un element on le met a la fin
 			last.next=newNode;
 			last=newNode;			
 		}
@@ -55,8 +63,8 @@ public class ReservationLinkedList {
 	
 	
 	/**
-	 * Retire le premier élément de la structure chainée
-	 * @return la première réservation de la structure chainée
+	 * Retire le premier element de la structure chainee
+	 * @return la premiere reservation de la structure chainee
 	 */
 	public Reservation dequeue() {
 		Node retour = first;
@@ -65,8 +73,8 @@ public class ReservationLinkedList {
 	}
 	
 	/**
-	 * Dis si la liste chainée est vide
-	 * @return true si pas d'élément dans la structure chainée de réservation, false sinon
+	 * Dis si la liste chainee est vide
+	 * @return true si pas d'element dans la structure chainee de reservation, false sinon
 	 */
 	public boolean isEmpty() {
 		if(first==null) {
@@ -77,18 +85,10 @@ public class ReservationLinkedList {
 		}
 	}
 	
-	
-	
-	
-	
 	/**
-	 * @param args
+	 * Methode toString permettant d'afficher sous forme d'une chaine de caracteres l'objet
+	 * @return une chaine de caracteres representant l'objet
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public String toString() {
 		String retour="";
 		Node parcours=first;

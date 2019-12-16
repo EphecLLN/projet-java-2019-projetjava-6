@@ -1,10 +1,10 @@
 package Projet6Parking;
 
 /**
- * Classe permettant de gérer les places des parkings
+ * Classe permettant de gerer les places des parkings
  * 
  * @author Nathan DE LEENER - HE201742
- * @version 2019/11/12
+ * @version 2019/12/17
  *
  */
 public class Place {
@@ -16,11 +16,11 @@ public class Place {
 	private boolean booked;		//Etat de la reservation de la place 
 	
 	//Constructeur
-	/**Défini une place avec son id, son numéro et le parking auquel elle appartient, par défault la place n'est pas réservée
+	/**Defini une place avec son id, son numero et le parking auquel elle appartient, par default la place n'est pas rï¿½servï¿½e
 	 * 
 	 * @param idPlace l'id de la place dans la DB
 	 * @param parking le parking auquel la place appartient
-	 * @param number le numéro de la place dans le parking
+	 * @param number le numero de la place dans le parking
 	 */
 	public Place(int idPlace, Parking parking, int number) {
 		this.idPlace = idPlace;
@@ -30,7 +30,7 @@ public class Place {
 	}
 
 	/**
-	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 * Constructeur vide pour pouvoir creer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
 	 */
 	public Place() {
 		idPlace=-1;
@@ -81,7 +81,7 @@ public class Place {
 	}
 	
 	
-	//Méthodes
+	//Methodes
 	/**
 	 * Nous dis si une place est libre ou non
 	 * 
@@ -107,7 +107,7 @@ public class Place {
 	 * @return une place sous forme de String
 	 */
 	public String toString() {
-		return "Place N° : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
+		return "Place NÂ° : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
 	}
 
 }

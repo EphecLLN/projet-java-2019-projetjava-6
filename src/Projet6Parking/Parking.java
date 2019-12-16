@@ -89,7 +89,7 @@ public class Parking {
 	}
 
 	
-	//M�thodes
+	//Methodes
 	/**
 	 * Retourne le nombre de places disponibles
 	 * 

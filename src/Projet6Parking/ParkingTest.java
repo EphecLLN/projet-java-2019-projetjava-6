@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author nathdl
- *
+ * @author DE LEENER Nathan
+ * @version 2019/12/17
  */
 class ParkingTest {
 
@@ -20,11 +20,11 @@ class ParkingTest {
 	void testPlaceAvail() {
 		Parking test1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		assertEquals(284, test1.placeAvail());
-		test1.setPlacesDispo(test1.getPlacesDispo() - 1); // Simulation de la réservation d'une place
+		test1.setPlacesDispo(test1.getPlacesDispo() - 1); // Simulation de la reservation d'une place
 		assertEquals(283, test1.placeAvail());
 		Parking test2 = new Parking(2, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		assertEquals(284, test2.placeAvail());
-		test2.setPlacesDispo(test2.getPlacesDispo() + 1); // Simulation de la libération d'une place
+		test2.setPlacesDispo(test2.getPlacesDispo() + 1); // Simulation de la liberation d'une place
 		assertEquals(285, test2.placeAvail());
 		
 	}
