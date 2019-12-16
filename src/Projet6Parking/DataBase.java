@@ -1,5 +1,6 @@
 package Projet6Parking;
 import java.sql.*;
+import java.util.Date;
 
 /**
  * Classe faisant le lien avec la base de donnee
@@ -126,6 +127,7 @@ public class DataBase {
 			rs2 = st2.executeQuery(sql);
 			if(rs2.first()) {
 				retour = new User(rs2.getInt("idUser"), rs2.getString("username"), rs2.getString("mdp"), rs2.getString("name"), rs2.getString("firstName"), rs2.getString("phone"), rs2.getString("mail"), rs2.getString("plate"));
+				retour.setPenalty(rs2.getInt("penalty"));
 			}
 			//else {
 			//	System.out.println("Aucun resultat");
@@ -381,7 +383,41 @@ public class DataBase {
 		}
 	}
 	
+	/**
+	 * Ajoute une penalite a l'utilisateur donne
+	 * @param idUser l'utilisateur à qui il faut ajouter une penalite
+	 */
+	public static void addPenalty(int idUser) {
+		Connection cn16 = null;
+		Statement st16 = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn16 = DriverManager.getConnection(url, login, mdp);
+			st16 = cn16.createStatement();
+			
+			String sql = "UPDATE `users` SET `penalty`=" + (getPenalty(idUser)+1) + " WHERE `idUser`=" + idUser;
+			st16.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn16.close();
+				st16.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	
+
+
+private static int getPenalty(int idUser) {
+		return getUser(idUser).getPenalty();
+	}
+
 
 
 //---GET INFO ABOUT DB
@@ -541,6 +577,87 @@ public class DataBase {
 		return retour;
 	}
 	
+	/**
+	 * Retourne le premier id que peut prendre une offence
+	 * @return le premier id que peut prendre une offence
+	 */
+	public static int getIdOffence() {
+		Connection cn15 = null;
+		Statement st15 = null;
+		ResultSet rs15 = null;
+
+		int retour=-1;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn15 = DriverManager.getConnection(url, login, mdp);
+			st15 = cn15.createStatement();
+
+			String sql = "SELECT MAX(idOffence) FROM offence";
+			rs15 = st15.executeQuery(sql);
+			if(rs15.first()) {
+				retour = rs15.getInt(1) + 1;
+			}
+			//else {
+			//	System.out.println("Aucun resultat");
+			//}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn15.close();
+				st15.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
+	
+	
+	/**
+	 * Permet de verifier lors de la connexion si le user est deja dans la base de donnee et si son mot de passe est correct
+	 * @param username Le username du user
+	 * @param password Le mot de passe du user
+	 * @return true si le user existe et son mot de passe est correct, false sinon
+	 */
+	public static boolean getUserExist(String username, String password) {
+		Connection cn17 = null;
+		Statement st17 = null;
+		ResultSet rs17 = null;
+
+		boolean retour=false;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn17 = DriverManager.getConnection(url, login, mdp);
+			st17 = cn17.createStatement();
+
+			String sql = "SELECT * FROM users WHERE users.username='" + username + "'";
+			rs17 = st17.executeQuery(sql);
+			if(rs17.first()) {
+				return(rs17.getString("mdp").contentEquals(password));
+			}
+			else {
+				return false; //Pas d'user avec ce nom la
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn17.close();
+				st17.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
+	
 	
 	
 	
@@ -585,8 +702,7 @@ public class DataBase {
 			cn9 = DriverManager.getConnection(url, login, mdp);
 			st9 = cn9.createStatement();
 			
-			String sql = "\r\n" + 
-					"INSERT INTO `reservation`(`idReservation`, `idPlace`, `idUser`) VALUES (" + r.getIdReservation() + "," + r.getPlace().getIdPlace() + "," + r.getUser().getIdUser() + ")";
+			String sql ="INSERT INTO `reservation`(`idReservation`, `idPlace`, `idUser`) VALUES (" + r.getIdReservation() + "," + r.getPlace().getIdPlace() + "," + r.getUser().getIdUser() + ")";
 			st9.executeUpdate(sql);
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -602,32 +718,40 @@ public class DataBase {
 		}
 	}
 	
+	/**
+	 * Ajoute une offence dans la base de donnee
+	 * @param of L'offence a ajoute dans la base de donnee
+	 */
+	public static void addOffence(Offence of) {
+		Connection cn16 = null;
+		Statement st16 = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn16 = DriverManager.getConnection(url, login, mdp);
+			st16 = cn16.createStatement();
+			
+			String sql = "INSERT INTO `offence`(`idOffence`, `idUserSignal`, `idUserFlagged`, `comment`, `idPlace`, `date`) VALUES (" + of.getIdOffence() + "," + of.getUserSignal().getIdUser() + "," + of.getUserFlagged().getIdUser() + ",'" + of.getComment() + "'," + of.getPlace().getIdPlace() + ",'" + of.getDate().toString() + "')";
+			st16.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn16.close();
+				st16.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+	
 	
 
 
 //---A TRIER---
-	/**
-	 * Ajoute une penalite a l'utilisateur donne
-	 * @param idUser l'utilisateur à qui il faut ajouter une penalite
-	 */
-	public static void addPenalty(int idUser) {
-		//TODO addpenalite
-
-	}
-	
-
-
 
 	
-	
-
-
-
-
-
-
-
-
 
 
 //---MAIN---
@@ -638,7 +762,7 @@ public class DataBase {
 	public static void main(String[] args) {
 		initialisationDonnees();
 		//System.out.println(parkings);
-		System.out.println(reservations);
+		//System.out.println(reservations);
 		//User u = getUser(3);
 		//System.out.println(u);
 		//System.out.println(getIdPlace());
@@ -654,9 +778,21 @@ public class DataBase {
 		//User testCompletReservation = getUser(1);
 		//testCompletReservation.reserve(getParking(3));
 		//System.out.println(reservations);
-		User testCompletLiberation = getUser(1);
-		testCompletLiberation.libereReservation(getReservation(13));
-		System.out.println(reservations);
+		//User testCompletLiberation = getUser(1);
+		//testCompletLiberation.libereReservation(getReservation(13));
+		//System.out.println(reservations);
+		//Date d = new Date();
+		//Offence offence1 = new Offence(getIdOffence(), getUser(1), getUser(2), "BlaBla4", getPlace(3),d);
+		//addOffence(offence1);	
+		//User user1 = getUser(1);
+		//Reservation reservation1 = getReservation(5);
+		//user1.flagV2(reservation1, "UnCommentRandom4");
+		//User user2 = getUser(3);
+		//user2.reserve(getParking(6));
+		//System.out.println(getUserExist("BLuk", "Bla"));
+		//System.out.println(getUserExist("BLuk", "BLuk1GFP497"));
+		
+		
 	}
 
 
@@ -664,6 +800,6 @@ public class DataBase {
 
 
 
-}
 
-//testAccentéèà
+
+}
