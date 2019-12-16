@@ -20,14 +20,14 @@ public class User {
 	private int penalty; //Nombre de pï¿½nalitï¿½ de l'utilisateur
 	
 	//Constructeur
-	/**Constructeur de l'objet User, les diffï¿½rents utilisateurs de l'application
+	/**Constructeur de l'objet User, les differents utilisateurs de l'application
 	 * 
 	 * @param idUser : l'id de l'utilisateur
 	 * @param name : nom de l'utilisateur
 	 * @param firstName : Prenom de l'utilisateur
 	 * @param phone : numero de telephone de l'utilisateur
 	 * @param mail : email de l'utilisateur
-	 * @param plate : la plaque d'immatriculation du vï¿½hicule de l'utilisateur
+	 * @param plate : la plaque d'immatriculation du vehicule de l'utilisateur
 	 */
 	public User(int idUser, String username, String mdp, String name, String firstName, String phone, String mail, String plate) {
 		this.idUser = idUser;
@@ -232,10 +232,10 @@ public class User {
 	
 	/**
 	 * Permet de reserver une place de parking
-	* @param p Le parking dans lequel l'utilisateur veut réserver
+	* @param p Le parking dans lequel l'utilisateur veut reserver
 	*/
 	public void reserve(Parking p) {
-		//vérif si encore place dispo
+		//verif si encore place dispo
 		if(p.getPlacesDispo()<1) {
 			System.out.println("Plus de place disponible");
 		}
@@ -254,14 +254,14 @@ public class User {
 	
 	/**
 	 * Permet de liberer une place de parking
-	 * @param p La palce qu'on veut liberer
+	 * @param p La place qu'on veut liberer
 	 */
 	public void liberePlace(Place p) {
 		if(p.isFree()) {
 			System.out.println("La place n'est pas reservee");
 		}
 		/*
-		 * verifier si la reservation est bien à l'utilisateur
+		 * verifier si la reservation est bien Ã  l'utilisateur
 		 */
 		else {
 			Parking pa = p.getParking();
@@ -279,10 +279,10 @@ public class User {
 		Place pl = r.getPlace();
 		Parking pa = pl.getParking();
 		if(r.getUser()!=this) {
-			System.out.println("Vous ne pouvez pas libï¿½rer une place que vous n'avez pas rï¿½servï¿½e");
+			System.out.println("Vous ne pouvez pas liberer une place que vous n'avez pas reservee");
 		}
 		if(pl.isFree()) {
-			System.out.println("La place n'est pas rï¿½servï¿½e");
+			System.out.println("La place n'est pas reservee");
 		}
 		else {
 			pa.setPlacesDispo(pa.getPlacesDispo()+1);
@@ -336,6 +336,6 @@ public class User {
 	 * @return l'utilisateur avec ses donnees
 	 */
 	public String toString() {
-		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pï¿½nalitï¿½ : " + this.penalty;
 	}
 }
