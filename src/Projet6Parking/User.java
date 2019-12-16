@@ -267,11 +267,7 @@ public class User {
 			System.out.println("La place n'est pas reservee");
 		}
 		/*
-<<<<<<< HEAD
 		 * verifier si la reservation est bien à l'utilisateur
-=======
-		 * verifier si la reservation est bien a l'utilisateur
->>>>>>> c3a205edbda4851625f665e87094dd82a1c25fe9
 		 */
 		else {
 			Parking pa = p.getParking();
