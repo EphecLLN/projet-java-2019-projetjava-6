@@ -230,7 +230,7 @@ public class DataBase {
 
 //---DATA UPDATE---
 	/**
-	 * Met à jour le nombre de place disponible du parking passé en argument
+	 * Met ï¿½ jour le nombre de place disponible du parking passï¿½ en argument
 	 * @param p le parking auquel il faut ajouter une place dispo
 	 */
 	public static void addPlaceDispo(Parking p) {
@@ -258,7 +258,7 @@ public class DataBase {
 	}
 
 	/**
-	 * Met à jour le nombre de place disponible du parking passé en argument
+	 * Met ï¿½ jour le nombre de place disponible du parking passï¿½ en argument
 	 * @param p Le parking auquel il faut retirer une place dispo
 	 */
 	public static void removePlaceDispo(Parking p) {
@@ -329,9 +329,9 @@ public class DataBase {
 	}
 
 	/**
-	 * Retourne le premier numéro que peut prendre une place
+	 * Retourne le premier numï¿½ro que peut prendre une place
 	 * @param p le parking dans lequel on veut une place
-	 * @return le premier numéro pour une place
+	 * @return le premier numï¿½ro pour une place
 	 */
 	public static int getNumberPlace(Parking p) {
 		Connection cn6 = null;
@@ -369,8 +369,8 @@ public class DataBase {
 	}
 	
 	/**
-	 * Retourne le premier Id que peut prendre une réservation
-	 * @return le premier id que peut prendre la réservation
+	 * Retourne le premier Id que peut prendre une rï¿½servation
+	 * @return le premier id que peut prendre la rï¿½servation
 	 */
 	public static int getIdReservation() {
 		Connection cn7 = null;
@@ -408,9 +408,9 @@ public class DataBase {
 	}
 	
 	/**
-	 * Retourne le nombre de place disponible dans le parking donné
+	 * Retourne le nombre de place disponible dans le parking donnï¿½
 	 * @param p le parking dont on veut le nombre de place dispo
-	 * @return le nombre de place dispo dans le parking donné
+	 * @return le nombre de place dispo dans le parking donnï¿½
 	 */
 	private static int getPlaceDispo(Parking p) {
 		Connection cn12 = null;
@@ -450,8 +450,8 @@ public class DataBase {
 	
 //---ADD DATA TO DB
 	/**
-	 * Ajoute la place pl dans la base de donnée
-	 * @param pl La place a ajouté dans la DB
+	 * Ajoute la place pl dans la base de donnï¿½e
+	 * @param pl La place a ajoutï¿½ dans la DB
 	 */
 	public static void addPlace(Place pl) {
 		Connection cn8 = null;
@@ -478,8 +478,8 @@ public class DataBase {
 	}
 
 	/**
-	 * Ajoute la réservation dans la base de donnée
-	 * @param r Une réservation a ajouter dans la base de donnée
+	 * Ajoute la rï¿½servation dans la base de donnï¿½e
+	 * @param r Une rï¿½servation a ajouter dans la base de donnï¿½e
 	 */
 	public static void addReservation(Reservation r) {
 		Connection cn9 = null;
@@ -511,16 +511,16 @@ public class DataBase {
 
 //---A TRIER---
 	/**
-	 * Ajoute une pénalité à l'utilisateur donné
+	 * Ajoute une pï¿½nalitï¿½ ï¿½ l'utilisateur donnï¿½
 	 * @param idUser
 	 */
 	public static void addPenalty(int idUser) {
-		//TODO addpenalité
+		//TODO addpenalitï¿½
 
 	}
 	
 	/**
-	 * Change la valeur du booleen de la place de libre (false) à occupé(true)
+	 * Change la valeur du booleen de la place de libre (false) ï¿½ occupï¿½(true)
 	 * @param pl La place dont il faut changer le statut de libre
 	 */
 	public static void setBooked(Place pl) {
@@ -543,7 +543,7 @@ public class DataBase {
 
 //---MAIN---
 	/**
-	 * Permet de tester les différentes méthodes au-dessus
+	 * Permet de tester les diffï¿½rentes mï¿½thodes au-dessus
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -568,3 +568,5 @@ public class DataBase {
 		
 	}
 }
+
+//testAccentÃ©Ã¨Ã 
