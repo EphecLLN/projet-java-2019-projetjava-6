@@ -47,6 +47,20 @@ public class Parking {
 	
 	//Getters & Setters
 	/**
+	 * @return the idParking
+	 */
+	public int getIdParking() {
+		return idParking;
+	}
+	
+	/**
+	 * @param idParking the idParking to set
+	 */
+	public void setIdParking(int idParking) {
+		this.idParking=idParking;
+	}
+	
+	/**
 	 * @return the position
 	 */
 	public String getPosition() {

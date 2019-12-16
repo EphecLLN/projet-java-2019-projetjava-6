@@ -220,7 +220,7 @@ public class User extends Observable{
 	}
 
 	/**
-	 * Ajoute une pï¿½nalitï¿½ ï¿½ l'utilisteur
+	 * Ajoute une penalite a l'utilisteur
 	 */
 	public void addPenalty() {
 		this.setPenalty(this.getPenalty()+1);
@@ -253,15 +253,15 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Permet de libï¿½rer une place de parking
-	 * @param p La palce qu'on veut libï¿½rer
+	 * Permet de liberer une place de parking
+	 * @param p La palce qu'on veut liberer
 	 */
 	public void liberePlace(Place p) {
 		if(p.isFree()) {
-			System.out.println("La place n'est pas rï¿½servï¿½e");
+			System.out.println("La place n'est pas reservee");
 		}
 		/*
-		 * vï¿½rifier si la rï¿½servation est bien ï¿½ l'utilisateur
+		 * verifier si la reservation est bien à l'utilisateur
 		 */
 		else {
 			Parking pa = p.getParking();

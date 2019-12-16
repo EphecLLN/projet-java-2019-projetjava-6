@@ -60,6 +60,20 @@ public class Place {
 	}
 
 	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	/**
 	 * @param parking the parking to set
 	 */
 	public void setParking(Parking parking) {
@@ -107,7 +121,7 @@ public class Place {
 	 * @return une place sous forme de String
 	 */
 	public String toString() {
-		return "Place N° : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
+		return "Place Numero : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
 	}
 
 }
