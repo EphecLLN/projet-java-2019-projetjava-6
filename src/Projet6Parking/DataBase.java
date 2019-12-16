@@ -63,7 +63,7 @@ public class DataBase {
 	
 	/**
 	 * Récupères toutes les réservations de la db pour les mettre dans la structure chainée correspondante
-	 */
+	 */	
 	public static void getAllReservation() {
 		Connection cn1 = null;
 		Statement st1 = null;
@@ -155,12 +155,10 @@ public class DataBase {
 			cn3 = DriverManager.getConnection(url, login, mdp);
 			st3 = cn3.createStatement();
 			
-			Parking parking1 = new Parking(-1, "vide", "vide", 15, 15, "vide");
-			
 			String sql = "SELECT * FROM place WHERE place.idPlace=" + idPlace;
 			rs3 = st3.executeQuery(sql);
 			if(rs3.first()) {
-				retour = new Place(rs3.getInt("idPlace"), parking1, rs3.getInt("number"));
+				retour = new Place(rs3.getInt("idPlace"), getParking(rs3.getInt("idParking")), rs3.getInt("number"));
 			}
 			//else {
 			//	System.out.println("Aucun resultat");
@@ -181,7 +179,45 @@ public class DataBase {
 		return retour;
 	}
 	 
-	 
+	/**
+	 * Retourne le parking ayant l'id passé en argument
+	 * @param idParking l'id du parking que l'on veut
+	 * @return le parking ayant l'id donné
+	 */
+	 public static Parking getParking(int idParking) {
+			Connection cn4 = null;
+			Statement st4 = null;
+			ResultSet rs4 = null;
+			
+			Parking retour = new Parking();
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				cn4 = DriverManager.getConnection(url, login, mdp);
+				st4 = cn4.createStatement();
+				
+				String sql = "SELECT * FROM parking WHERE parking.idParking=" + idParking;
+				rs4 = st4.executeQuery(sql);
+				if(rs4.first()) {
+					retour = new Parking(rs4.getInt("idParking"), rs4.getString("name"), rs4.getString("position"), rs4.getInt("placeTot"), rs4.getInt("placeDispo"), rs4.getString("type"));
+				}
+				//else {
+				//	System.out.println("Aucun resultat");
+				//}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					cn4.close();
+					st4.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return retour;
+	 }
 	 
 	
 	

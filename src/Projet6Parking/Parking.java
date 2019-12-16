@@ -38,6 +38,12 @@ public class Parking {
 		this.type = type;
 	}
 
+	/**
+	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 */
+	public Parking() {
+		this.idParking=-1;
+	}
 	
 	//Getters & Setters
 	/**
