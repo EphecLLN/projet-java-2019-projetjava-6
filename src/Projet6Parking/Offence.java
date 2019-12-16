@@ -151,14 +151,6 @@ public class Offence {
 	//Methodes
 	
 	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	/**
 	 * Retourne une offence sous forme de String pour l'afficher en console
 	 * 
 	 * @return une offence et ses donn�es
