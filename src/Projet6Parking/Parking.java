@@ -149,11 +149,7 @@ public class Parking {
 	 * @return un parking et ses donnees
 	 */
 	public String toString() {
-<<<<<<< HEAD
 		return "Parking NÂ° : " + this.idParking + ", nom : " + this.name + " situe " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
-=======
-		return "Parking N° : " + this.idParking + ", nom : " + this.name + " situé " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
->>>>>>> b4455fc932bdc5b560e2323f9015913e0b078766
 	}
 	
   
