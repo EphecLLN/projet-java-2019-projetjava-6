@@ -6,7 +6,7 @@ import Projet6Parking.DataBase;
  * @author he201676
  *
  */
-public class User extends Observable{
+public class User {
 
 	//Variables d'instance
 	private int idUser; //Ajout pour pouvoir faire le lien avec la DB
@@ -25,7 +25,7 @@ public class User extends Observable{
 	 * @param idUser : l'id de l'utilisateur
 	 * @param name : nom de l'utilisateur
 	 * @param firstName : Prenom de l'utilisateur
-	 * @param phone : numï¿½ro de telephone de l'utilisateur
+	 * @param phone : numero de telephone de l'utilisateur
 	 * @param mail : email de l'utilisateur
 	 * @param plate : la plaque d'immatriculation du vï¿½hicule de l'utilisateur
 	 */
@@ -42,7 +42,7 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Constructeur vide pour pouvoir crï¿½er un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 * Constructeur vide pour pouvoir creer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
 	 */
 	public User() {
 		this.idUser=-1;
@@ -231,8 +231,14 @@ public class User extends Observable{
 	}
 	
 	/**
+<<<<<<< HEAD
+	 * Permet de reserver une place de parking
+	 * 
+	 * @param p La place que l'utilisateur veut reserver
+=======
 	 * Permet de rï¿½server une place de parking
 	 * @param p Le parking dans lequel l'utilisateur veut réserver
+>>>>>>> fa7597667dea893bfa695f3adb0b3f2be2fde1e9
 	 */
 	public void reserve(Parking p) {
 		//vérif si encore place dispo
@@ -261,7 +267,11 @@ public class User extends Observable{
 			System.out.println("La place n'est pas reservee");
 		}
 		/*
+<<<<<<< HEAD
 		 * verifier si la reservation est bien à l'utilisateur
+=======
+		 * verifier si la reservation est bien a l'utilisateur
+>>>>>>> c3a205edbda4851625f665e87094dd82a1c25fe9
 		 */
 		else {
 			Parking pa = p.getParking();
@@ -271,9 +281,9 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Permet d'arreter une rï¿½servation
+	 * Permet d'arreter une reservation
 	 * 
-	 * @param r la rï¿½servation qui est finie
+	 * @param r la reservation qui est finie
 	 */
 	public void libereReservation(Reservation r) {
 		Place pl = r.getPlace();
@@ -293,7 +303,7 @@ public class User extends Observable{
 	/**
 	 * Permet de signaler un utilisateur
 	 * 
-	 * @param pl la place ou ï¿½ lieu l'infraction
+	 * @param pl la place ou a lieu l'infraction
 	 * @param com la raison de l'infraction
 	 */
 	public void flagV1(Place pl, String com) {
@@ -308,7 +318,7 @@ public class User extends Observable{
 	/**
 	 * Permet de signaler un utilisateur
 	 * 
-	 * @param r la reservation ou ï¿½ lieu l'infraction
+	 * @param r la reservation ou a lieu l'infraction
 	 * @param com la raison de l'infraction
 	 */
 	public void flagV2(Reservation r, String com) {
@@ -333,7 +343,7 @@ public class User extends Observable{
 	/**
 	 * Retourne un utilisateur sous forme de String pour un affichage console
 	 * 
-	 * @return l'utilisateur avec ses donnï¿½es
+	 * @return l'utilisateur avec ses donnees
 	 */
 	public String toString() {
 		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;

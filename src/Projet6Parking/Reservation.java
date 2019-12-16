@@ -1,22 +1,25 @@
 package Projet6Parking;
 
 /**
- * @author he201732
- *
+ * Classe Reservation permettant de gerer les reservations de places de parking
+ * faites par les utilisateurs
+ * 
+ * @author GORTZ GaÃ«tan
+ * @version 2019/12/17
  */
 public class Reservation {
 	
 	//Variable d'instance
 	private int idReservation; //L'id globale de la reservation dans la DB
-	private Place place; //La place sur laquelle on fait la réservation
-	private User user; //L'utilisateur qui fait la réservation
+	private Place place; //La place sur laquelle on fait la reservation
+	private User user; //L'utilisateur qui fait la reservation
 		
 	//Constructeur
-	/**Défini une réservation avec la place réservée et l'utilisateur qui fait la réservation
+	/**Defini une reservation avec la place reservee et l'utilisateur qui fait la reservation
 	 * 
-	 * @param idReservation l'id de la réservation dans la DB
-	 * @param place la place qui est réservée
-	 * @param user l'utilisateur qui réserve la place
+	 * @param idReservation l'id de la reservation dans la DB
+	 * @param place la place qui est reservee
+	 * @param user l'utilisateur qui reserve la place
 	 */
 	public Reservation(int idReservation, Place place, User user) {
 		this.idReservation = idReservation;
@@ -69,12 +72,7 @@ public class Reservation {
 	}
 
 	
-	//Méthodes
-	
-	
-	
-	
-	
+	//Methodes
 	/**
 	 * @param args
 	 */
@@ -84,12 +82,12 @@ public class Reservation {
 	}
 	
 	/**
-	 * Retourne une réservation sous forme de String
+	 * Retourne une reservation sous forme de String
 	 * 
 	 * @return Une reservation sous forme de String
 	 */
 	public String toString() {
-		return "Reservation N° : " + this.idReservation + ",\n\t place : [" + this.place + "],\n\t utilisateur : [" + this.user + "]";
+		return "Reservation NÂ° : " + this.idReservation + ",\n\t place : [" + this.place + "],\n\t utilisateur : [" + this.user + "]";
 	}
 
 }

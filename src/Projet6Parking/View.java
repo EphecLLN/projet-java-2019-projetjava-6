@@ -4,8 +4,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -35,159 +33,95 @@ public class View {
 	
 	User model = new User(0, null, null, null, null, null, null, null);
 	
-	
 	/**
-	 * @return 
-	 */
-	public JPanel getP() {
-		return p;
-	}
-
-	/**
-	 * @return
-	 */
-	public JPanel getpLabel() {
-		return pLabel;
-	}
-
-	/**
-	 * @return
-	 */
-	public JPanel getpText() {
-		return pText;
-	}
-	
-	/**
-	 * @return
+	 * @return le mot de passe entre
 	 */
 	public JPasswordField getMdp() {
 		return mdp;
 	}
 
 	/**
-	 * @return
+	 * @return le nom
 	 */
 	public JTextField getNom() {
 		return nom;
 	}
 
 	/**
-	 * @return
+	 * @return le prenom
 	 */
 	public JTextField getPrenom() {
 		return prenom;
 	}
 
 	/**
-	 * @return
+	 * @return le numero de telephone
 	 */
 	public JTextField getTel() {
 		return tel;
 	}
 
 	/**
-	 * @return
+	 * @return l'adresse email entree
 	 */
 	public JTextField getEmail() {
 		return email;
 	}
 
 	/**
-	 * @return
+	 * @return le numero de matricule
 	 */
 	public JTextField getMat() {
 		return mat;
 	}
 
 	/**
-	 * @return
+	 * @return action de valider 
 	 */
 	public JPanel getValider() {
 		return valider;
 	}
 
 	/**
-	 * @return
-	 */
-	public JPanel getGui() {
-		return gui;
-	}
-
-	/**
-	 * @return
-	 */
-	public JFrame getFrame() {
-		return frame;
-	}
-
-	/**
-	 * @return
+	 * @return action de valider une inscription
 	 */
 	public JButton getValiderInscr() {
 		return validerInscr;
 	}
 	
 	/**
-	 * @return
+	 * @return le compte
 	 */
 	public JButton getCompte() {
 		return compte;
 	}
 	
 	/**
-	 * @return
+	 * @return action de validation
 	 */
 	public JLabel getValidation() {
 		return validation;
 	}
 
 	/**
-	 * @return
-	 */
-	public JPanel getL() {
-		return l;
-	}
-
-	/**
-	 * @return
+	 * @return le nom d'utilisateur
 	 */
 	public JTextField getUsername() {
 		return username;
 	}
 
 	/**
-	 * @return
+	 * @return le resultat renvoye
 	 */
 	public JTextField getRes() {
 		return res;
 	}
 
 	/**
-	 * @return
-	 */
-	public JFrame getFrameLog() {
-		return frameLog;
-	}
-
-	/**
-	 * @return
-	 */
-	public JFrame getFrameRes() {
-		return frameRes;
-	}
-
-	/**
-	 * @return
+	 * @return action de valider le compte
 	 */
 	public JButton getValiderCompte() {
 		return validerCompte;
-	}
-
-	/**
-	 * @return
-	 */
-	public JButton getValiderRes() {
-		return validerRes;
 	}
 	
 	public void init() {
