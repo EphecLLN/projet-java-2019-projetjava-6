@@ -1,7 +1,7 @@
 /** Ceci est la classe Offence qui represente une infraction dans l'utilisation des parkings.
  * Chaque Offence se voit attribuee un numero unique afin de pouvoir identifier facilement les objets
- * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de d�crire le d�lit
- * Une Offence se r�f�re a une Place et donc a un Parking, ainsi qu'une date
+ * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de decrire le d�lit
+ * Une Offence se refaire a une Place et donc a un Parking, ainsi qu'une date
  * 
  * 
  * @author gaeta_2b6psqs

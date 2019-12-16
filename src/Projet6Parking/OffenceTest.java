@@ -20,8 +20,8 @@ class OffenceTest {
 	 */
 	@Test
 	void testSetComment() {
-		User r=new User(1, "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
-		User f=new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
+		User r=new User(1, "gGortz", "motdepasse", "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
+		User f=new User(2, "nDL", "nathan", "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
 		Parking test1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		Place p = new Place(3, test1, 5);
 		Date d=new Date();
@@ -29,8 +29,8 @@ class OffenceTest {
 		String commentCourt="Intra reducti bellatores bellatores si quis insist";
 		Offence test12 = new Offence(1, r, f, commentLong, p, d);
 		assertEquals(commentCourt,test12.getComment());
-		User r2=new User(1, "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
-		User f2=new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
+		User r2=new User(1, "gGortz", "motdepasse", "Gaetan", "Gortz", "0477688808", "he201732@students.ephec.be","87tx3");
+		User f2=new User(2, "nDL", "nathan","Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
 		Parking test2 = new Parking(2, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		Place p2 = new Place(3, test2, 5);
 		Date d2=new Date();

@@ -3,7 +3,7 @@ import java.util.*;
 import Projet6Parking.*;
 
 /**
- * Classe permettant de définir des parkings et les méthodes qui leurs sont associées
+ * Classe permettant de dï¿½finir des parkings et les mï¿½thodes qui leurs sont associï¿½es
  * 
  * @author Nathan DE LEENER - HE201742
  * @version 2019/11/14
@@ -20,11 +20,11 @@ public class Parking {
 	private String type;
 	
 	//Constructeur
-	/**Défini un parking avec son nombre de place et sa localisation
+	/**Dï¿½fini un parking avec son nombre de place et sa localisation
 	 * 
 	 * @param idParking : Id du parking dans la DB
 	 * @param name : Nom du parking
-	 * @param position : Nom du lieu où se situe le parking
+	 * @param position : Nom du lieu oï¿½ se situe le parking
 	 * @param nbrPlace : Nombre de place totale
 	 * @param nbrPlaceDisp : Nombre de place disponible
 	 * @param type : Type du parking
@@ -39,7 +39,7 @@ public class Parking {
 	}
 
 	/**
-	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 * Constructeur vide pour pouvoir crï¿½er un objet dans a classe DataBase sans avoir des erreurs d'initialisation
 	 */
 	public Parking() {
 		this.idParking=-1;
@@ -89,7 +89,7 @@ public class Parking {
 	}
 
 	
-	//Méthodes
+	//Mï¿½thodes
 	/**
 	 * Retourne le nombre de places disponibles
 	 * 
@@ -100,10 +100,10 @@ public class Parking {
 	}
 	
 	/**
-	 * Ajoute un nombre défini de places au parking
+	 * Ajoute un nombre dï¿½fini de places au parking
 	 * 
-	 * @param nouvPlaces : Nombre de place à ajouter au parking
-	 * @return Le parking modifié en terme de nombre total de places et de places disponibles
+	 * @param nouvPlaces : Nombre de place ï¿½ ajouter au parking
+	 * @return Le parking modifiï¿½ en terme de nombre total de places et de places disponibles
 	 */
 	public void addPlace(int nouvPlaces) {
 		if (nouvPlaces > 0) {
@@ -113,10 +113,10 @@ public class Parking {
 	}
 	
 	/**
-	 * Supprime un nombre défini de places au parking
+	 * Supprime un nombre dï¿½fini de places au parking
 	 * 
-	 * @param suppPlaces : Nombre de places à supprimer du parking
-	 * @return Le parking modifié en terme de nombre total de places et de places disponibles
+	 * @param suppPlaces : Nombre de places ï¿½ supprimer du parking
+	 * @return Le parking modifiï¿½ en terme de nombre total de places et de places disponibles
 	 */
 	public void deletePlace(int suppPlaces) {
 		if (suppPlaces > 0) {
@@ -141,9 +141,9 @@ public class Parking {
 	 */
 	public static void main(String[] args) {
 		// Users
-		User user1 = new User (0, "Gortz", "Gaetan", "11111111", "g.gortz@students.ephec.be", "1-AAA-111");
-		User user2 = new User (1, "De Leener", "Nathan", "22222222", "n.deleener@students.ephec.be", "1-BBB-222");
-		User user3 = new User (2, "Luk", "Brian", "33333333", "b.luk@students.ephec.be", "1-CCC-333");
+		User user1 = new User (0, "gGortz", "motdepasse", "Gortz", "Gaetan", "11111111", "g.gortz@students.ephec.be", "1-AAA-111");
+		User user2 = new User (1, "nDL", "nathan", "De Leener", "Nathan", "22222222", "n.deleener@students.ephec.be", "1-BBB-222");
+		User user3 = new User (2, "bLuk", "1234", "Luk", "Brian", "33333333", "b.luk@students.ephec.be", "1-CCC-333");
 		// Parkings
 		Parking p1 = new Parking (0, "Parking 1", "Localisation 1", 100, 100, "Gratuit");
 		Parking p2 = new Parking (1, "Parking 2", "Localisation 2", 25, 25, "Payant");
@@ -173,10 +173,10 @@ public class Parking {
 	/**
 	 * Retourne un parking sous forme de String
 	 * 
-	 * @return un parking et ses données
+	 * @return un parking et ses donnï¿½es
 	 */
 	public String toString() {
-		return "Parking N° : " + this.idParking + ", nom : " + this.name + " situé " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
+		return "Parking Nï¿½ : " + this.idParking + ", nom : " + this.name + " situï¿½ " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
 	}
 	
   
