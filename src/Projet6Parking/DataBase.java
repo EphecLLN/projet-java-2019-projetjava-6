@@ -234,4 +234,77 @@ public class DataBase {
 		
 	}
 
+	/**
+	 * Ajoute une pénalité à l'utilisateur donné
+	 * @param idUser
+	 */
+	public static void addPenalty(int idUser) {
+		//TODO addpenalité
+		
+	}
+
+	/**
+	 * Retourne l'id que peut prendre une nouvelle place
+	 * @return le premier id dispo pour une place
+	 */
+	public static int getIdPlace() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * Retourne le premier numéro que peut prendre une place
+	 * @param p le parking dans lequel on veut une place
+	 * @return le premier numéro pour une place
+	 */
+	public static int getNumberPlace(Parking p) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * Ajoute la place pl dans la base de donnée
+	 * @param pl La place a ajouté dans la DB
+	 */
+	public static void addPlace(Place pl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Retourne le premier Id que peut prendre une réservation
+	 * @return le premier id que peut prendre la réservation
+	 */
+	public static int getIdReservation() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * Ajoute la réservation dans la base de donnée
+	 * @param r Une réservation a ajouter dans la base de donnée
+	 */
+	public static void addReservation(Reservation r) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Change la valeur du booleen de la place de libre (false) à occupé(true)
+	 * @param pl La place dont il faut changer le statut de libre
+	 */
+	public static void setBooked(Place pl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Met à jour le nombre de place disponible du parking passé en argument
+	 * @param p Le parking dont il faut changer le nombre de place dispo
+	 */
+	public static void removePlaceDispo(Parking p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

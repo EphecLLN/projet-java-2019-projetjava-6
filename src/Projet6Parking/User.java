@@ -1,5 +1,6 @@
 package Projet6Parking;
 import java.util.*;
+import Projet6Parking.DataBase;
 
 /**
  * @author he201676
@@ -183,22 +184,28 @@ public class User extends Observable{
 		if(this.getPenalty()>=3) {
 			System.out.println("Vous avez trop d'infractions");
 		}
+		DataBase.addPenalty(this.idUser);
 	}
 	
 	/**
 	 * Permet de réserver une place de parking
 	 * 
-	 * @param p La place que l'utilisateur veut réserver
+	 * @param p Le parking dans lequel l'utilisateur veut réserver
 	 */
-	public void reserve(Place p) {
-		if(p.isBooked()) {
-			System.out.println("La place est déjà prise");
+	public void reserve(Parking p) {
+		//vérif si encore place dispo
+		if(p.getPlacesDispo()<1) {
+			System.out.println("Plus de place disponible");
 		}
-		else {
-		Reservation r = new Reservation(1, p, this);
-		p.setBooked(true);
-			System.out.println(r);
-		Parking pa = p.getParking();
+		else { //Encore de la place de libre
+		Place pl = new Place(DataBase.getIdPlace(),p, DataBase.getNumberPlace(p));
+		DataBase.addPlace(pl);
+		Reservation r = new Reservation(DataBase.getIdReservation(), pl, this);
+		DataBase.addReservation(r);
+		DataBase.reservations.enqueue(r);
+		pl.setBooked(true);
+		DataBase.setBooked(pl);
+		Parking pa = pl.getParking();
 		pa.setPlacesDispo(pa.getPlacesDispo()-1);
 		}
 	}
@@ -287,6 +294,6 @@ public class User extends Observable{
 	 * @return l'utilisateur avec ses données
 	 */
 	public String toString() {
-		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
 	}
 }
