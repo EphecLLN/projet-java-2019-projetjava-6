@@ -1,7 +1,7 @@
-/** Ceci est la classe Offence qui représente une infraction dans l'utilisation des parkings.
- * Chaque Offence se voit attribuée un numéro unique afin de pouvoir identifier facilement les objets
- * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de décrire le délit
- * Une Offence se référe a une Place et donc a un Parking, ainsi qu'une date
+/** Ceci est la classe Offence qui represente une infraction dans l'utilisation des parkings.
+ * Chaque Offence se voit attribuee un numero unique afin de pouvoir identifier facilement les objets
+ * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de dï¿½crire le dï¿½lit
+ * Une Offence se rï¿½fï¿½re a une Place et donc a un Parking, ainsi qu'une date
  * 
  * 
  * @author gaeta_2b6psqs
@@ -18,7 +18,7 @@ public class Offence {
 	int idOffence; //l'id de l'offence dans la DB
 	User userSignal; //l'utilisateur qui signale l'infraction
 	User userFlagged; //l'utilisateur qui commet l'infraction
-	String comment; //la description de l'infraction maximum 50 caractères (SQL)
+	String comment; //la description de l'infraction maximum 50 caractï¿½res (SQL)
 	Place place; //la place sur laquelle l'infraction a lieu
 	Date date; //la date a laquelle l'infraction a lieu
 	
@@ -148,7 +148,7 @@ public class Offence {
 
 	
 	
-	//Méthodes
+	//Mï¿½thodes
 	
 	/**
 	 * @param args
@@ -161,10 +161,10 @@ public class Offence {
 	/**
 	 * Retourne une offence sous forme de String pour l'afficher en console
 	 * 
-	 * @return une offence et ses données
+	 * @return une offence et ses donnï¿½es
 	 */
 	public String toString() {
-		return "Offence N° " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date;
+		return "Offence Nï¿½ " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date;
 	}
 
 }
