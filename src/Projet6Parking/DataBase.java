@@ -118,7 +118,7 @@ public class DataBase {
 			String sql = "SELECT * FROM users WHERE users.idUser=" + id;
 			rs2 = st2.executeQuery(sql);
 			if(rs2.first()) {
-				retour = new User(rs2.getInt("idUser"), rs2.getString("name"), rs2.getString("firstName"), rs2.getString("phone"), rs2.getString("mail"), rs2.getString("plate"));
+				retour = new User(rs2.getInt("idUser"), rs2.getString("username"), rs2.getString("mdp"), rs2.getString("name"), rs2.getString("firstName"), rs2.getString("phone"), rs2.getString("mail"), rs2.getString("plate"));
 			}
 			//else {
 			//	System.out.println("Aucun resultat");
