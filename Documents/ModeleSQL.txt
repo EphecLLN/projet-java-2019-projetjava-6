@@ -55,4 +55,8 @@
 	return retour;
 
 
+INSERT INTO `reservation`(`idReservation`, `idPlace`, `idUser`) VALUES (" +  + "," +  + "," +  + ")
 
+
+
+accentéèà

@@ -231,15 +231,9 @@ public class User {
 	}
 	
 	/**
-<<<<<<< HEAD
 	 * Permet de reserver une place de parking
-	 * 
-	 * @param p La place que l'utilisateur veut reserver
-=======
-	 * Permet de rï¿½server une place de parking
-	 * @param p Le parking dans lequel l'utilisateur veut réserver
->>>>>>> fa7597667dea893bfa695f3adb0b3f2be2fde1e9
-	 */
+	* @param p Le parking dans lequel l'utilisateur veut réserver
+	*/
 	public void reserve(Parking p) {
 		//vérif si encore place dispo
 		if(p.getPlacesDispo()<1) {
@@ -253,8 +247,8 @@ public class User {
 		DataBase.reservations.enqueue(r);
 		pl.setBooked(true);
 		DataBase.setBooked(pl);
-		Parking pa = pl.getParking();
-		pa.setPlacesDispo(pa.getPlacesDispo()-1);
+		p.setPlacesDispo(p.getPlacesDispo()-1);
+		DataBase.removePlaceDispo(p);
 		}
 	}
 	

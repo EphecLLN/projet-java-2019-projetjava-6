@@ -547,9 +547,9 @@ public class DataBase {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//initialisationDonnees();
+		initialisationDonnees();
 		//System.out.println(parkings);
-		//System.out.println(reservations);
+		System.out.println(reservations);
 		//User u = getUser(3);
 		//System.out.println(u);
 		//System.out.println(getIdPlace());
@@ -559,9 +559,12 @@ public class DataBase {
 		//addPlace(place1);
 		//Reservation reservation1 = new Reservation(getIdReservation(), getPlace(2), getUser(0));
 		//addReservation(reservation1);
-		Parking parking1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
+		//Parking parking1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		//removePlaceDispo(parking1);
-		addPlaceDispo(parking1);
-
+		//addPlaceDispo(parking1);
+		User testCompletReservation = getUser(1);
+		testCompletReservation.reserve(getParking(3));
+		System.out.println(reservations);
+		
 	}
 }
