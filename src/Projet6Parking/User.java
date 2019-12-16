@@ -5,10 +5,12 @@ import java.util.*;
  * @author he201676
  *
  */
-public class User {
+public class User extends Observable{
 
 	//Variables d'instance
 	private int idUser; //Ajout pour pouvoir faire le lien avec la DB
+	private String username;
+	private String mdp;
 	private String name; //Nom de l'utilisateur
 	private String firstName;  //Prénom de l'utilisateur
 	private String phone; //Téléphone de l'utilisateur
@@ -26,8 +28,10 @@ public class User {
 	 * @param mail : email de l'utilisateur
 	 * @param plate : la plaque d'immatriculation du véhicule de l'utilisateur
 	 */
-	public User(int idUser, String name, String firstName, String phone, String mail, String plate) {
+	public User(int idUser, String username, String mdp, String name, String firstName, String phone, String mail, String plate) {
 		this.idUser = idUser;
+		this.username = username;
+		this.mdp = mdp;
 		this.name = name;
 		this.firstName = firstName;
 		this.phone = phone;
@@ -36,110 +40,117 @@ public class User {
 		this.penalty = 0;
 	}
 	
-	/**
-	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
-	 */
-	public User() {
-		this.idUser=-1;
-		this.firstName="";
-	}
-	
 	
 	//Getters & Setters
-	/**
-	 * @return the idUser
-	 */
-	public int getidUser() {
+
+	public int getIdUser() {
 		return idUser;
 	}
 
-	/**
-	 * @param idUser the idUser to set
-	 */
-	public void setidUser(int idUser) {
-		this.idUser = idUser;
+
+	public String getUsername() {
+		return username;
 	}
 
-	/**
-	 * @return the name
-	 */
+
+	public String getMdp() {
+		return mdp;
+	}
+
+
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	/**
-	 * @return the firstName
-	 */
-	public String getfirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setfirstName(String firstName) {
-		this.firstName = firstName;
-	}
 
-	/**
-	 * @return the phone
-	 */
 	public String getPhone() {
 		return phone;
 	}
 
-	/**
-	 * @param phone the phone to set
-	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 
-	/**
-	 * @return the mail
-	 */
 	public String getMail() {
 		return mail;
 	}
 
-	/**
-	 * @param mail the mail to set
-	 */
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
 
-	/**
-	 * @return the plate
-	 */
 	public String getPlate() {
 		return plate;
 	}
 
-	/**
-	 * @param plate the plate to set
-	 */
-	public void setPlate(String plate) {
-		this.plate = plate;
-	}
 
-	/**
-	 * @return the penalty
-	 */
 	public int getPenalty() {
 		return penalty;
 	}
 
-	/**
-	 * @param penalty the penalty to set
-	 */
+	public void setUsername(String username) {
+		if(username.isEmpty()) {
+			System.out.println("Vous n'avez pas mis de nom d'utilisateur");
+		}
+		else {
+		this.username = username;
+		System.out.println("Nom d'utilisateur : " + username);
+		}
+		}
+
+	public void setMdp(String mdp) {
+		if(mdp.isEmpty()) {
+			System.out.println("Vous n'avez pas mis de nom");
+		}
+		else {
+		this.mdp = mdp;
+		}
+	}
+
+	public void setName(String name) {
+		if(name.isEmpty()) {
+			System.out.println("Vous n'avez pas mis de nom");
+		}
+		else {
+		this.name = name;
+		System.out.println("Nom : " + name);
+		}
+	}
+
+	public void setFirstName(String firstName) {
+		if(firstName.isEmpty()) {
+			System.out.println("Vous n'avez pas mis de prenom");
+		}
+		else {
+		this.firstName = firstName;
+		System.out.println("Prenom : " + firstName);
+		}
+	}
+
+	public void setPhone(String phone) {
+		if(phone.isEmpty()) {
+			System.out.println("Vous n'avez pas mis de numero de telephone");
+		}
+		else {
+		this.phone = phone;
+		System.out.println("Numero de telephone : " + phone);
+		}
+	}
+
+	public void setMail(String mail) {
+		if(!mail.contains("@") && !mail.contains(".com")) {
+			System.out.println("ce n'est pas un email");
+		}
+		else {
+		this.mail = mail;
+		System.out.println("Mail : " + mail);
+		}
+	}
+
+	public void setPlate(String plate) {
+		this.plate = plate;
+		System.out.println("Plaque d'immatriculation : " + plate);
+	}
+	
 	public void setPenalty(int penalty) {
 		this.penalty = penalty;
 	}
@@ -156,7 +167,7 @@ public class User {
 			System.out.println("Vous avez plus acces au reservation.");
 		}
 	}
-	
+
 	/**
 	 * Ajoute une pénalité à l'utilisteur
 	 */
@@ -232,7 +243,7 @@ public class User {
 	public void flagV1(Place pl, String com) {
 		Date d = new Date();
 		//Aller chercher l'utilisateur
-		User userF = new User(2, "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
+		User userF = new User(2,"NathDL", "mdp", "Nath", "DL","0478262700", "he201742@students.ephec.be", "1gfp497");
 		Offence of = new Offence(1, this, userF, com, pl, d);
 		//Ajouter une penalite a l'utilisateur
 		userF.addPenalty();
@@ -269,6 +280,6 @@ public class User {
 	 * @return l'utilisateur avec ses données
 	 */
 	public String toString() {
-		return "id : " + this.idUser + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
 	}
 }
