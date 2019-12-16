@@ -1,7 +1,8 @@
 package Projet6Parking;
 
 /**
- * @author gaeta_2b6psqs
+ * @author GORTZ GaÃ«tan
+ * @version 2019/12/17
  *
  */
 public class ParkingLinkedList {
@@ -11,7 +12,7 @@ public class ParkingLinkedList {
 		private Node next;
 		
 		/**
-		 * Constructeur d'un noeud de la structure chainée de parking
+		 * Constructeur d'un noeud de la structure chainee de parking
 		 * @param p le parking
 		 */
 		public Node(Parking p) {
@@ -20,11 +21,11 @@ public class ParkingLinkedList {
 		}
 	}
 	
-	private Node first; //Premier élément de la liste
-	private Node last; //Dernier élément de la liste
+	private Node first; //Premier element de la liste
+	private Node last; //Dernier element de la liste
 	
 	/**
-	 * Crée une structure chainée de parking en initialisant le premier et dernier noeud a null
+	 * Cree une structure chainee de parking en initialisant le premier et dernier noeud a null
 	 * La liste ne contient alors pas encore de parking
 	 */
 	public ParkingLinkedList() {
@@ -33,20 +34,20 @@ public class ParkingLinkedList {
 	}
 	
 	/**
-	 * Ajoute un parking à la fin de la structure chainée
-	 * @param p le parking à ajouter dans la structure
+	 * Ajoute un parking a la fin de la structure chainee
+	 * @param p le parking a ajouter dans la structure
 	 */
 	public void enqueue(Parking p) {
 		Node newNode = new Node(p);
-		if(isEmpty()) { //Si pas d'élément dans la structure => le nouveau noeud est le premier et le dernier
+		if(isEmpty()) { //Si pas d'element dans la structure => le nouveau noeud est le premier et le dernier
 			first = newNode;
 			last = newNode;
 		}
-		else if(first==last) { //s'il y a un seul élément
+		else if(first==last) { //s'il y a un seul element
 			first.next=newNode;
 			last=newNode;
 		}
-		else { //S'il y a plus d'un élément
+		else { //S'il y a plus d'un element
 			last.next=newNode;
 			last=newNode;			
 		}
@@ -54,8 +55,8 @@ public class ParkingLinkedList {
 	
 	
 	/**
-	 * Retire le premier élément de la structure chainée
-	 * @return le premier parkign de la structure chainée
+	 * Retire le premier element de la structure chainee
+	 * @return le premier parkign de la structure chainee
 	 */
 	public Parking dequeue() {
 		Node retour = first;
@@ -64,8 +65,8 @@ public class ParkingLinkedList {
 	}
 	
 	/**
-	 * Dis si la liste chainée est vide
-	 * @return true si pas d'élément dans la structure chainée de parking, false sinon
+	 * Dis si la liste chainee est vide
+	 * @return true si pas d'element dans la structure chainee de parking, false sinon
 	 */
 	public boolean isEmpty() {
 		if(first==null) {

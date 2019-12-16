@@ -2,12 +2,14 @@ package Projet6Parking;
 import java.sql.*;
 
 /**
- * @author gaeta_2b6psqs
- *
+ * Classe faisant le lien avec la base de donnÃ©e
+ * 
+ * @author GORTZ GaÃ«tan
+ * @version 2019/12/17
  */
 public class DataBase {
 	static ParkingLinkedList parkings;  //Liste de tous les parkings
-	static ReservationLinkedList reservations; //Liste de toutes les réservations
+	static ReservationLinkedList reservations; //Liste de toutes les reservations
 
 	private static String url = "jdbc:mysql://localhost/projetparking";
 	private static String login = "root";
@@ -15,7 +17,7 @@ public class DataBase {
 
 	
 	/**
-	 * Initialise les différents listes de données
+	 * Initialise les differents listes de donnees
 	 */
 	public static void initialisationDonnees() {
 		parkings = new ParkingLinkedList();
@@ -30,7 +32,7 @@ public class DataBase {
 	}
 	
 	/**
-	 * Récupère tout les parkings dans la base de donnée et les mets dans la liste chainée de parking
+	 * Recupere tout les parkings dans la base de donnee et les mets dans la liste chainee de parking
 	 */
 	public static void getAllParking() {
 		Connection cn0 = null;
@@ -62,7 +64,7 @@ public class DataBase {
 	}
 	
 	/**
-	 * Récupères toutes les réservations de la db pour les mettre dans la structure chainée correspondante
+	 * Recuperes toutes les reservations de la db pour les mettre dans la structure chainee correspondante
 	 */	
 	public static void getAllReservation() {
 		Connection cn1 = null;
@@ -100,9 +102,9 @@ public class DataBase {
 	
 	
 	/**
-	 * Récupère un utilisateur dans la base de donnée sur base de son nom
+	 * Recupere un utilisateur dans la base de donnee sur base de son nom
 	 * @param id L'id de l'user que l'on veut
-	 * @return le premier user ayant l'id donné
+	 * @return le premier user ayant l'id donne
 	 */	
 	public static User getUser(int id) {
 		Connection cn2 = null;
@@ -140,9 +142,9 @@ public class DataBase {
 	}
 	
 	/**
-	 * Retourne la place ayant l'id passé en argument
+	 * Retourne la place ayant l'id passe en argument
 	 * @param idPlace l'id de la place que l'on veut
-	 * @return la première place avec l'id donné
+	 * @return la premiere place avec l'id donne
 	 */
 	public static Place getPlace(int idPlace) {
 		Connection cn3 = null;
@@ -180,9 +182,9 @@ public class DataBase {
 	}
 	 
 	/**
-	 * Retourne le parking ayant l'id passé en argument
+	 * Retourne le parking ayant l'id passe en argument
 	 * @param idParking l'id du parking que l'on veut
-	 * @return le parking ayant l'id donné
+	 * @return le parking ayant l'id donne
 	 */
 	 public static Parking getParking(int idParking) {
 			Connection cn4 = null;

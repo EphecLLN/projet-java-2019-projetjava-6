@@ -13,21 +13,21 @@ public class User extends Observable{
 	private String username;
 	private String mdp;
 	private String name; //Nom de l'utilisateur
-	private String firstName;  //Prénom de l'utilisateur
-	private String phone; //Téléphone de l'utilisateur
+	private String firstName;  //Prenom de l'utilisateur
+	private String phone; //Telephone de l'utilisateur
 	private String mail; //Mail de l'utilisateur
 	private String plate; //Plaque de la voiture de l'utilisateur
-	private int penalty; //Nombre de pénalité de l'utilisateur
+	private int penalty; //Nombre de pï¿½nalitï¿½ de l'utilisateur
 	
 	//Constructeur
-	/**Constructeur de l'objet User, les différents utilisateurs de l'application
+	/**Constructeur de l'objet User, les diffï¿½rents utilisateurs de l'application
 	 * 
 	 * @param idUser : l'id de l'utilisateur
 	 * @param name : nom de l'utilisateur
-	 * @param firstName : prénom de l'utilisateur
-	 * @param phone : numéro de téléphone de l'utilisateur
+	 * @param firstName : Prenom de l'utilisateur
+	 * @param phone : numï¿½ro de telephone de l'utilisateur
 	 * @param mail : email de l'utilisateur
-	 * @param plate : la plaque d'immatriculation du véhicule de l'utilisateur
+	 * @param plate : la plaque d'immatriculation du vï¿½hicule de l'utilisateur
 	 */
 	public User(int idUser, String username, String mdp, String name, String firstName, String phone, String mail, String plate) {
 		this.idUser = idUser;
@@ -42,7 +42,7 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Constructeur vide pour pouvoir créer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 * Constructeur vide pour pouvoir crï¿½er un objet dans a classe DataBase sans avoir des erreurs d'initialisation
 	 */
 	public User() {
 		this.idUser=-1;
@@ -51,50 +51,72 @@ public class User extends Observable{
 	
 	//Getters & Setters
 
+	/**
+	 * @return l'Id du User
+	 */
 	public int getIdUser() {
 		return idUser;
 	}
 
-
+	/**
+	 * @return le username
+	 */
 	public String getUsername() {
 		return username;
 	}
 
-
+	/**
+	 * @return le mot de passe
+	 */
 	public String getMdp() {
 		return mdp;
 	}
 
-
+	/**
+	 * @return le nom
+	 */
 	public String getName() {
 		return name;
 	}
 
-
+	/**
+	 * @return le prenom
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
-
+	/**
+	 * @return le numero de telephone
+	 */
 	public String getPhone() {
 		return phone;
 	}
 
-
+	/**
+	 * @return le mail
+	 */
 	public String getMail() {
 		return mail;
 	}
 
-
+	/**
+	 * @return le numero de plaque
+	 */
 	public String getPlate() {
 		return plate;
 	}
 
-
+	/**
+	 * @return le nombre de penalites 
+	 */
 	public int getPenalty() {
 		return penalty;
 	}
 
+	/**
+	 * @param username le prenom a definir
+	 */
 	public void setUsername(String username) {
 		if(username.isEmpty()) {
 			System.out.println("Vous n'avez pas mis de nom d'utilisateur");
@@ -105,6 +127,9 @@ public class User extends Observable{
 		}
 		}
 
+	/**
+	 * @param mdp le mot de passe a definir 
+	 */
 	public void setMdp(String mdp) {
 		if(mdp.isEmpty()) {
 			System.out.println("Vous n'avez pas mis de nom");
@@ -114,6 +139,9 @@ public class User extends Observable{
 		}
 	}
 
+	/**
+	 * @param name le nom a definir
+	 */
 	public void setName(String name) {
 		if(name.isEmpty()) {
 			System.out.println("Vous n'avez pas mis de nom");
@@ -124,6 +152,9 @@ public class User extends Observable{
 		}
 	}
 
+	/**
+	 * @param firstName le prenom a definir 
+	 */
 	public void setFirstName(String firstName) {
 		if(firstName.isEmpty()) {
 			System.out.println("Vous n'avez pas mis de prenom");
@@ -134,16 +165,22 @@ public class User extends Observable{
 		}
 	}
 
+	/**
+	 * @param phone le numero de telephone a definir 
+	 */
 	public void setPhone(String phone) {
 		if(phone.isEmpty()) {
-			System.out.println("Vous n'avez pas mis de numero de telephone");
+			System.out.println("Vous n'avez pas mis de  de telephone");
 		}
 		else {
 		this.phone = phone;
-		System.out.println("Numero de telephone : " + phone);
+		System.out.println(" de telephone : " + phone);
 		}
 	}
 
+	/**
+	 * @param mail l'adresse email a definir 
+	 */
 	public void setMail(String mail) {
 		if(!mail.contains("@") && !mail.contains(".com")) {
 			System.out.println("ce n'est pas un email");
@@ -154,17 +191,23 @@ public class User extends Observable{
 		}
 	}
 
+	/**
+	 * @param plate le numero de plaque a definir
+	 */
 	public void setPlate(String plate) {
 		this.plate = plate;
 		System.out.println("Plaque d'immatriculation : " + plate);
 	}
-	
+
+	/**
+	 * @param penalty le nombre de penalites a definir
+	 */
 	public void setPenalty(int penalty) {
 		this.penalty = penalty;
 	}
 
 	
-	//Méthodes
+	//Methodes
 	public void penalty(int nbPen) {
 		if((nbPen > 0) || (nbPen <= 3)) {
 			penalty = nbPen;
@@ -177,7 +220,7 @@ public class User extends Observable{
 	}
 
 	/**
-	 * Ajoute une pénalité à l'utilisteur
+	 * Ajoute une pï¿½nalitï¿½ ï¿½ l'utilisteur
 	 */
 	public void addPenalty() {
 		this.setPenalty(this.getPenalty()+1);
@@ -188,14 +231,22 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Permet de réserver une place de parking
+	 * Permet de rï¿½server une place de parking
 	 * 
+<<<<<<< HEAD
 	 * @param p Le parking dans lequel l'utilisateur veut réserver
 	 */
 	public void reserve(Parking p) {
 		//vérif si encore place dispo
 		if(p.getPlacesDispo()<1) {
 			System.out.println("Plus de place disponible");
+=======
+	 * @param p La place que l'utilisateur veut rï¿½server
+	 */
+	public void reserve(Place p) {
+		if(p.isBooked()) {
+			System.out.println("La place est dï¿½jï¿½ prise");
+>>>>>>> 3c46d3a6e45469db06d139fdc9ece920d97c6025
 		}
 		else { //Encore de la place de libre
 		Place pl = new Place(DataBase.getIdPlace(),p, DataBase.getNumberPlace(p));
@@ -211,15 +262,15 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Permet de libérer une place de parking
-	 * @param p La palce qu'on veut libérer
+	 * Permet de libï¿½rer une place de parking
+	 * @param p La palce qu'on veut libï¿½rer
 	 */
 	public void liberePlace(Place p) {
 		if(p.isFree()) {
-			System.out.println("La place n'est pas réservée");
+			System.out.println("La place n'est pas rï¿½servï¿½e");
 		}
 		/*
-		 * vérifier si la réservation est bien à l'utilisateur
+		 * vï¿½rifier si la rï¿½servation est bien ï¿½ l'utilisateur
 		 */
 		else {
 			Parking pa = p.getParking();
@@ -229,18 +280,18 @@ public class User extends Observable{
 	}
 	
 	/**
-	 * Permet d'arreter une réservation
+	 * Permet d'arreter une rï¿½servation
 	 * 
-	 * @param r la réservation qui est finie
+	 * @param r la rï¿½servation qui est finie
 	 */
 	public void libereReservation(Reservation r) {
 		Place pl = r.getPlace();
 		Parking pa = pl.getParking();
 		if(r.getUser()!=this) {
-			System.out.println("Vous ne pouvez pas libérer une place que vous n'avez pas réservée");
+			System.out.println("Vous ne pouvez pas libï¿½rer une place que vous n'avez pas rï¿½servï¿½e");
 		}
 		if(pl.isFree()) {
-			System.out.println("La place n'est pas réservée");
+			System.out.println("La place n'est pas rï¿½servï¿½e");
 		}
 		else {
 			pa.setPlacesDispo(pa.getPlacesDispo()+1);
@@ -251,7 +302,7 @@ public class User extends Observable{
 	/**
 	 * Permet de signaler un utilisateur
 	 * 
-	 * @param pl la place ou à lieu l'infraction
+	 * @param pl la place ou ï¿½ lieu l'infraction
 	 * @param com la raison de l'infraction
 	 */
 	public void flagV1(Place pl, String com) {
@@ -266,7 +317,7 @@ public class User extends Observable{
 	/**
 	 * Permet de signaler un utilisateur
 	 * 
-	 * @param r la reservation ou à lieu l'infraction
+	 * @param r la reservation ou ï¿½ lieu l'infraction
 	 * @param com la raison de l'infraction
 	 */
 	public void flagV2(Reservation r, String com) {
@@ -291,9 +342,13 @@ public class User extends Observable{
 	/**
 	 * Retourne un utilisateur sous forme de String pour un affichage console
 	 * 
-	 * @return l'utilisateur avec ses données
+	 * @return l'utilisateur avec ses donnï¿½es
 	 */
 	public String toString() {
+<<<<<<< HEAD
 		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
+=======
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pï¿½nalitï¿½ : " + this.penalty;
+>>>>>>> 3c46d3a6e45469db06d139fdc9ece920d97c6025
 	}
 }

@@ -1,5 +1,4 @@
 package Projet6Parking;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -18,7 +17,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class View implements Observer{
+/**
+ * Classe permettant de realiser l'affichage de l'interface graphique et console 
+ * du programme
+ * 
+ * @author LUK Brian
+ * @version 2019/12/17
+ */
+public class View {
 	
 	JPanel p, l, pLabel, pText,valider, gui;
 	JTextField nom, prenom, tel, email, mat, username, res, signaler, matSig, retirerRes;
@@ -29,90 +35,157 @@ public class View implements Observer{
 	
 	User model = new User(0, null, null, null, null, null, null, null);
 	
+	
+	/**
+	 * @return 
+	 */
 	public JPanel getP() {
 		return p;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getpLabel() {
 		return pLabel;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getpText() {
 		return pText;
 	}
 	
+	/**
+	 * @return
+	 */
 	public JPasswordField getMdp() {
 		return mdp;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getNom() {
 		return nom;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getPrenom() {
 		return prenom;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getTel() {
 		return tel;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getEmail() {
 		return email;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getMat() {
 		return mat;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getValider() {
 		return valider;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getGui() {
 		return gui;
 	}
 
+	/**
+	 * @return
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 
+	/**
+	 * @return
+	 */
 	public JButton getValiderInscr() {
 		return validerInscr;
 	}
 	
+	/**
+	 * @return
+	 */
 	public JButton getCompte() {
 		return compte;
 	}
 	
+	/**
+	 * @return
+	 */
 	public JLabel getValidation() {
 		return validation;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getL() {
 		return l;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getUsername() {
 		return username;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextField getRes() {
 		return res;
 	}
 
+	/**
+	 * @return
+	 */
 	public JFrame getFrameLog() {
 		return frameLog;
 	}
 
+	/**
+	 * @return
+	 */
 	public JFrame getFrameRes() {
 		return frameRes;
 	}
 
+	/**
+	 * @return
+	 */
 	public JButton getValiderCompte() {
 		return validerCompte;
 	}
 
+	/**
+	 * @return
+	 */
 	public JButton getValiderRes() {
 		return validerRes;
 	}
@@ -319,12 +392,6 @@ public class View implements Observer{
 		    frameSig.setLocationByPlatform(true);
 		    frameSig.setVisible(false);
 		    frameSig.setLocation(500, 300);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		System.out.println("test");
 	}
 	
 	
