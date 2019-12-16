@@ -17,7 +17,7 @@ public class User {
 	private String phone; //Telephone de l'utilisateur
 	private String mail; //Mail de l'utilisateur
 	private String plate; //Plaque de la voiture de l'utilisateur
-	private int penalty; //Nombre de p�nalit� de l'utilisateur
+	private int penalty; //Nombre de penalite de l'utilisateur
 	
 	//Constructeur
 	/**Constructeur de l'objet User, les differents utilisateurs de l'application
@@ -336,6 +336,6 @@ public class User {
 	 * @return l'utilisateur avec ses donnees
 	 */
 	public String toString() {
-		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de p�nalit� : " + this.penalty;
+		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de penalite : " + this.penalty;
 	}
 }
