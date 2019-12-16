@@ -278,15 +278,18 @@ public class User {
 	public void libereReservation(Reservation r) {
 		Place pl = r.getPlace();
 		Parking pa = pl.getParking();
-		if(r.getUser()!=this) {
+		if(!this.equals(r.getUser())) {
 			System.out.println("Vous ne pouvez pas liberer une place que vous n'avez pas reservee");
 		}
-		if(pl.isFree()) {
+		if(pl.isBooked()) {
 			System.out.println("La place n'est pas reservee");
 		}
 		else {
 			pa.setPlacesDispo(pa.getPlacesDispo()+1);
+			DataBase.addPlaceDispo(pa);
 			pl.setBooked(false);
+			DataBase.unsetBooked(pl);
+			DataBase.reservations.suppresReservation(r);
 		}
 	}
 	
@@ -317,6 +320,21 @@ public class User {
 		User userF = r.getUser();
 		Offence of = new Offence(1, this, userF, com, pl, d);
 		userF.addPenalty();
+	}
+	
+	/**
+	 * Compare si 2 utilisateurs sont les memes sur base de leur id
+	 * @return true si les 2 id sont les memes, false sinon
+	 */
+	public boolean equals(Object o) {
+		if(this==null || o==null) {
+			return false;
+		}
+		if(o.getClass()!=this.getClass()) {
+			return false;
+		}
+		User u = (User)o;
+		return this.idUser==u.idUser;
 	}
 	
 	

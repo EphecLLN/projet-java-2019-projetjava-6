@@ -225,12 +225,52 @@ public class DataBase {
 		}
 		return retour;
 	}
+	
+	/**
+	 * Retourne la reservation ayant l'id passe en argument
+	 * @param id l'id de la reservation que l'on cherche
+	 * @return la reservation ayant l'id donne
+	 */
+	private static Reservation getReservation(int id) {
+		Connection cn15 = null;
+		Statement st15 = null;
+		ResultSet rs15 = null;
+
+		Reservation retour = new Reservation();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn15 = DriverManager.getConnection(url, login, mdp);
+			st15 = cn15.createStatement();
+
+			String sql = "SELECT * FROM reservation WHERE reservation.idReservation=" + id;
+			rs15 = st15.executeQuery(sql);
+			if(rs15.first()) {
+				retour = new Reservation(rs15.getInt("idReservation"), getPlace(rs15.getInt("idPlace")), getUser(rs15.getInt("idUser")));
+			}
+			//else {
+			//	System.out.println("Aucun resultat");
+			//}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn15.close();
+				st15.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
 
 
 
 //---DATA UPDATE---
 	/**
-	 * Met � jour le nombre de place disponible du parking pass� en argument
+	 * Met a jour le nombre de place disponible du parking passe en argument
 	 * @param p le parking auquel il faut ajouter une place dispo
 	 */
 	public static void addPlaceDispo(Parking p) {
@@ -258,7 +298,7 @@ public class DataBase {
 	}
 
 	/**
-	 * Met � jour le nombre de place disponible du parking pass� en argument
+	 * Met a jour le nombre de place disponible du parking passe en argument
 	 * @param p Le parking auquel il faut retirer une place dispo
 	 */
 	public static void removePlaceDispo(Parking p) {
@@ -285,7 +325,63 @@ public class DataBase {
 		}
 	}
 
-
+	/**
+	 * Change la valeur du booleen de la place de libre (false) a occupe(true)
+	 * @param pl La place dont il faut changer le statut de libre
+	 */
+	public static void setBooked(Place pl) {
+		Connection cn13 = null;
+		Statement st13 = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn13 = DriverManager.getConnection(url, login, mdp);
+			st13 = cn13.createStatement();
+			
+			String sql = "UPDATE `place` SET `booked`=" + true + " WHERE `idPlace`=" + pl.getIdPlace();
+			st13.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn13.close();
+				st13.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Change la valeur du booleen de la place d'occupe (true) a libre (false)
+	 * @param pl La place dont il faut changer le statut d'occupe
+	 */
+	public static void unsetBooked(Place pl) {
+		Connection cn14 = null;
+		Statement st14 = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn14 = DriverManager.getConnection(url, login, mdp);
+			st14 = cn14.createStatement();
+			
+			String sql = "UPDATE `place` SET `booked`=" + false + " WHERE `idPlace`=" + pl.getIdPlace();
+			st14.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn14.close();
+				st14.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 
 
 //---GET INFO ABOUT DB
@@ -329,9 +425,9 @@ public class DataBase {
 	}
 
 	/**
-	 * Retourne le premier num�ro que peut prendre une place
+	 * Retourne le premier numero que peut prendre une place
 	 * @param p le parking dans lequel on veut une place
-	 * @return le premier num�ro pour une place
+	 * @return le premier numero pour une place
 	 */
 	public static int getNumberPlace(Parking p) {
 		Connection cn6 = null;
@@ -478,8 +574,8 @@ public class DataBase {
 	}
 
 	/**
-	 * Ajoute la r�servation dans la base de donn�e
-	 * @param r Une r�servation a ajouter dans la base de donn�e
+	 * Ajoute la reservation dans la base de donnee
+	 * @param r Une reservation a ajouter dans la base de donnee
 	 */
 	public static void addReservation(Reservation r) {
 		Connection cn9 = null;
@@ -515,18 +611,11 @@ public class DataBase {
 	 * @param idUser l'utilisateur à qui il faut ajouter une penalite
 	 */
 	public static void addPenalty(int idUser) {
-		//TODO addpenalit�
+		//TODO addpenalite
 
 	}
 	
-	/**
-	 * Change la valeur du booleen de la place de libre (false) � occup�(true)
-	 * @param pl La place dont il faut changer le statut de libre
-	 */
-	public static void setBooked(Place pl) {
-		// TODO Auto-generated method stub
 
-	}
 
 
 	
@@ -562,11 +651,19 @@ public class DataBase {
 		//Parking parking1 = new Parking(1, "Baudoin 1er", "Boulevard Baudoin Ier", 284, 284, "Gratuit");
 		//removePlaceDispo(parking1);
 		//addPlaceDispo(parking1);
-		User testCompletReservation = getUser(1);
-		testCompletReservation.reserve(getParking(3));
+		//User testCompletReservation = getUser(1);
+		//testCompletReservation.reserve(getParking(3));
+		//System.out.println(reservations);
+		User testCompletLiberation = getUser(1);
+		testCompletLiberation.libereReservation(getReservation(13));
 		System.out.println(reservations);
-		
 	}
+
+
+
+
+
+
 }
 
 //testAccentéèà
