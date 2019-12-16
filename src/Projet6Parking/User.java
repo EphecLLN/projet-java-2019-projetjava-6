@@ -232,21 +232,12 @@ public class User extends Observable{
 	
 	/**
 	 * Permet de rï¿½server une place de parking
-	 * 
-<<<<<<< HEAD
 	 * @param p Le parking dans lequel l'utilisateur veut réserver
 	 */
 	public void reserve(Parking p) {
 		//vérif si encore place dispo
 		if(p.getPlacesDispo()<1) {
 			System.out.println("Plus de place disponible");
-=======
-	 * @param p La place que l'utilisateur veut rï¿½server
-	 */
-	public void reserve(Place p) {
-		if(p.isBooked()) {
-			System.out.println("La place est dï¿½jï¿½ prise");
->>>>>>> 3c46d3a6e45469db06d139fdc9ece920d97c6025
 		}
 		else { //Encore de la place de libre
 		Place pl = new Place(DataBase.getIdPlace(),p, DataBase.getNumberPlace(p));
@@ -345,10 +336,6 @@ public class User extends Observable{
 	 * @return l'utilisateur avec ses donnï¿½es
 	 */
 	public String toString() {
-<<<<<<< HEAD
 		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + this.mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pénalité : " + this.penalty;
-=======
-		return "id : " + this.idUser + ", username : " + this.username + ", mdp : " + mdp + ", nom :  " + this.name + " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate + ", nombre de pï¿½nalitï¿½ : " + this.penalty;
->>>>>>> 3c46d3a6e45469db06d139fdc9ece920d97c6025
 	}
 }
