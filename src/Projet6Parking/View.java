@@ -369,37 +369,47 @@ public class View {
 		    	model.setUsername(sc.nextLine());
 		    	System.out.println("Votre mot de passe ?");
 		    	model.setMdp(sc.nextLine());
-		    	Scanner sc2 = new Scanner(System.in);
-		    	System.out.println("Voulez vous reserver ou signaler? r/s (r = reserver, s = signaler)");
-		    	switch(sc2.nextLine()) {
-		    	case "r":
-		    		System.out.println("Reservation");
-		    		System.out.println(sc2.nextLine());
-		    		Scanner sc3 = new Scanner(System.in);
-		    		System.out.println("Voulez vous enlever une reservation ? y/n (y = oui, n = non)");
-		    		switch(sc3.nextLine()) {
-		    		case "y":
-		    			System.out.println("Tapez la reservation a enleve");
-		    		case "n":
+		    	if(DataBase.getUserExist(model.getUsername(), model.getMdp())) { //Si l'utilisateur existe
+		    		connecte=DataBase.getUser(model.getUsername());
+		    		System.out.println("Vous etes bien connecte");
+			    	Scanner sc2 = new Scanner(System.in);
+			    	System.out.println("Voulez vous reserver, signaler ou liberer? r/s/l (r = reserver, s = signaler, l = liberer)");
+			    	switch(sc2.nextLine()) {
+			    	case "r":
+			    		System.out.println("Entrez le nom du parking");
+			    		System.out.println("Baudoin 1er, Parking Agro, Parking croix du sud, Parking Cyclotron, Parking de Lauzelle, Parking des Sciences, Parking Euler, Parking Grand-Place, Parking Grand-Rue, Parking Halles, Parking Leclercq,");
+			    		System.out.println("Parking Les Serres, Parking Magritte, Parking Montesquieu, Parking P14, Parking Rédimé, Parking Sablon, Parking Sainte-Barbe, Parking Socrate, Parking Wallons, Parking Vinci, Parking Hocaille");
+			    		Scanner sc5 = new Scanner(System.in);
+			    		connecte.reserve(DataBase.getParking(sc5.nextLine()));
+			    		sc5.close();
+			    		break;
+			    	case "s":
+			    		int nR;
+			    		String co;
+			    		System.out.println("Reservation ou a lieu l'infraction");
+			    		Scanner sc7 = new Scanner(System.in);
+			    		nR=Integer.parseInt(sc7.nextLine());
+			    		System.out.println("Commentaire ?");
+			    		co=sc7.nextLine();
+			    		connecte.flagV2(DataBase.getReservation(nR), co);
+			    		sc7.close();
+			    		break;
+			    	case "l":
+			    		System.out.println("Tapez le numero de la reservation a enleve");
+			    		Scanner sc6 = new Scanner(System.in);
+			    		connecte.libereReservation(DataBase.getReservation(Integer.parseInt(sc6.nextLine())));
+			    		sc6.close();
+			    		break;
+			    	default : 
+		    			System.out.println("Entree non valide, redemarrez le programme"); 
 		    			break;
-		    		default : 
-		    			System.out.println("Entr�e non valide"); 
-		    			break;
-		    		}
-		    		sc3.close();
-		    		break;
-		    	case "s":
-		    		System.out.println("Matricule du vehicule en effraction");
-		    		System.out.println(sc2.nextLine());
-		    		System.out.println("Commentaire ?");
-		    		
-		    		break;
-		    	default : 
-	    			System.out.println("Entr�e non valide"); 
-	    			break;
+			    	}
+			    	sc2.close();
+			    	break;
 		    	}
-		    	sc2.close();
-		    	break;
+		    	else { //Si l'utilisateur n'exite pas ou le mot de passe est incorrect
+		    		System.out.println("Cet utilisateur n'existe pas ou le mot de passe est incorrect");
+		    	}
 		    case "n" : 
 		    	Scanner sc4 = new Scanner(System.in);
 		    	System.out.println("Voulez vous creer un compte ? y/n (y = oui, n = non)");
@@ -419,17 +429,20 @@ public class View {
 		    		model.setMail(sc4.nextLine());
 		    		System.out.println("Tapez votre plaque d'immatriculation");
 		    		model.setPlate(sc4.nextLine());
+		    		model.setIdUser(DataBase.getIdUser());
+		    		DataBase.addUser(model);
+		    		System.out.println("Vous avez bien ete ajoute a la base de donnee, relancez le programme");
 		    		break;
 		    	case "n":
 		    		break;
 		    	default : 
-	    			System.out.println("Entr�e non valide"); 
+	    			System.out.println("Entree non valide, redemarrez le programme"); 
 	    			break;
 		    	}
 		    	sc4.close();
 		    break;
 		    default : 
-    			System.out.println("Entr�e non valide"); 
+    			System.out.println("Entree non valide, redemarrez le programme"); 
     			break;
 		    }
 		    sc.close();

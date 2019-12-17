@@ -51,6 +51,13 @@ public class Offence {
 		date = d;
 	}
 	
+	/**
+	 * Cree une offence vide pour pouvoir la completer avec les get et set
+	 */
+	public Offence() {
+		idOffence=-1;
+	}
+
 
 	//Getters & Setters
 	/**

@@ -62,6 +62,13 @@ public class User {
 	}
 
 	/**
+	 * @param idUser the idUser to set
+	 */
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	/**
 	 * @return le username
 	 */
 	public String getUsername() {
