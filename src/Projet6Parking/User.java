@@ -242,6 +242,7 @@ public class User {
 			Place pl = new Place(DataBase.getIdPlace(), p, DataBase.getNumberPlace(p));
 			DataBase.addPlace(pl);
 			Reservation r = new Reservation(DataBase.getIdReservation(), pl, this);
+			System.out.println("Votre réservation est la " + r.getIdReservation());
 			DataBase.addReservation(r);
 			DataBase.reservations.enqueue(r);
 			pl.setBooked(true);
@@ -262,7 +263,7 @@ public class User {
 		if (!this.equals(r.getUser())) {
 			System.out.println("Vous ne pouvez pas liberer une place que vous n'avez pas reservee");
 		}
-		if (pl.isBooked()) {
+		else if (pl.isBooked()) {
 			System.out.println("La place n'est pas reservee");
 		} else {
 			pa.setPlacesDispo(pa.getPlacesDispo() + 1);
@@ -270,6 +271,7 @@ public class User {
 			pl.setBooked(false);
 			DataBase.unsetBooked(pl);
 			DataBase.reservations.suppresReservation(r);
+			System.out.println("Votre reservation avec le numero " + r.getIdReservation() + " a ete supprimee");
 		}
 	}
 
@@ -286,6 +288,8 @@ public class User {
 		Offence of = new Offence(DataBase.getIdOffence(), this, userF, com, pl, d);
 		DataBase.addOffence(of);
 		userF.addPenalty();
+		System.out.println("Voici votre signalisation : ");
+		System.out.println(of);
 	}
 
 	/**

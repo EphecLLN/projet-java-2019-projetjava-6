@@ -68,7 +68,7 @@ public class DataBase {
 			}
 		}
 	}
-
+	
 	/**
 	 * Recuperes toutes les reservations de la db pour les mettre dans la structure chainee correspondante
 	 */	
@@ -140,6 +140,47 @@ public class DataBase {
 			try {
 				cn2.close();
 				st2.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
+	
+	/**
+	 * retourne le premier utilisateur ayant le username fournit en parametre
+	 * @param username le username du user qu'on cherche
+	 * @return le premier user ayant cet username la
+	 */
+	public static User getUser(String username) {
+		Connection cn20 = null;
+		Statement st20 = null;
+		ResultSet rs20 = null;
+
+		User retour = new User();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn20 = DriverManager.getConnection(url, login, mdp);
+			st20 = cn20.createStatement();
+
+			String sql = "SELECT * FROM users WHERE users.username='" + username + "'";
+			rs20 = st20.executeQuery(sql);
+			if(rs20.first()) {
+				retour = new User(rs20.getInt("idUser"), rs20.getString("username"), rs20.getString("mdp"), rs20.getString("name"), rs20.getString("firstName"), rs20.getString("phone"), rs20.getString("mail"), rs20.getString("plate"));
+				retour.setPenalty(rs20.getInt("penalty"));
+			}
+			//else {
+			//	System.out.println("Aucun resultat");
+			//}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn20.close();
+				st20.close();
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -229,11 +270,51 @@ public class DataBase {
 	}
 	
 	/**
+	 * Retourne le parking ayant le nom passé en argument
+	 * @param parkingName le nom du parking que l'on veut
+	 * @return le parking ayant le nom passé en argument
+	 */
+	public static Parking getParking(String parkingName) {
+		Connection cn4 = null;
+		Statement st4 = null;
+		ResultSet rs4 = null;
+
+		Parking retour = new Parking();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn4 = DriverManager.getConnection(url, login, mdp);
+			st4 = cn4.createStatement();
+
+			String sql = "SELECT * FROM parking WHERE parking.name='" + parkingName + "'";
+			rs4 = st4.executeQuery(sql);
+			if(rs4.first()) {
+				retour = new Parking(rs4.getInt("idParking"), rs4.getString("name"), rs4.getString("position"), rs4.getInt("placeTot"), rs4.getInt("placeDispo"), rs4.getString("type"));
+			}
+			//else {
+			//	System.out.println("Aucun resultat");
+			//}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn4.close();
+				st4.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
+	
+	/**
 	 * Retourne la reservation ayant l'id passe en argument
 	 * @param id l'id de la reservation que l'on cherche
 	 * @return la reservation ayant l'id donne
 	 */
-	private static Reservation getReservation(int id) {
+	public static Reservation getReservation(int id) {
 		Connection cn15 = null;
 		Statement st15 = null;
 		ResultSet rs15 = null;
@@ -460,6 +541,45 @@ private static int getPenalty(int idUser) {
 		return retour;
 	}
 
+	/**
+	 * Retourne le premier id que peut prendre un User
+	 * @return le premier id que peut prendre un user
+	 */
+	public static int getIdUser() {
+		Connection cn19 = null;
+		Statement st19 = null;
+		ResultSet rs19 = null;
+
+		int retour=-1;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn19 = DriverManager.getConnection(url, login, mdp);
+			st19 = cn19.createStatement();
+
+			String sql = "SELECT MAX(idUser) FROM users";
+			rs19 = st19.executeQuery(sql);
+			if(rs19.first()) {
+				retour = rs19.getInt(1) + 1;
+			}
+			//else {
+			//	System.out.println("Aucun resultat");
+			//}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn19.close();
+				st19.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return retour;
+	}
+	
 	/**
 	 * Retourne le premier numero que peut prendre une place
 	 * @param p le parking dans lequel on veut une place
@@ -746,6 +866,34 @@ private static int getPenalty(int idUser) {
 		}		
 	}
 	
+	/**
+	 * Ajoute un utilisateur a la base de donnee
+	 * @param nouveau l'utilisateur a ajoute
+	 */
+	public static void addUser(User nouveau) {
+		Connection cn18 = null;
+		Statement st18 = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn18 = DriverManager.getConnection(url, login, mdp);
+			st18 = cn18.createStatement();
+			
+			String sql = "INSERT INTO `users`(`idUser`, `name`, `firstName`, `phone`, `mail`, `plate`, `penalty`, `username`, `mdp`) VALUES (" + nouveau.getIdUser() + ",'" + nouveau.getName() + "','" + nouveau.getFirstName() + "','" + nouveau.getPhone() + "','" + nouveau.getMail() + "','" + nouveau.getPlate() + "'," + nouveau.getPenalty() +",'" + nouveau.getUsername() + "','" + nouveau.getMdp() + "')";
+			st18.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn18.close();
+				st18.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+	}
+	
 	
 
 
@@ -791,9 +939,25 @@ private static int getPenalty(int idUser) {
 		//user2.reserve(getParking(6));
 		//System.out.println(getUserExist("BLuk", "Bla"));
 		//System.out.println(getUserExist("BLuk", "BLuk1GFP497"));
-		
+		//System.out.println(getUser("BLuk"));
+		//System.out.println(getIdUser());
+		//User n = new User(26,"Gae","gaet","Gaet","gaet","0478262700","get.g@fmai.com","87tc3");
+		//addUser(n);
+		System.out.println(getParking(3));
+		System.out.println(getParking(getParking(3).getName()));
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

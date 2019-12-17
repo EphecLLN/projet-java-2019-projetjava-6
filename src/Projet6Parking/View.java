@@ -25,13 +25,14 @@ import javax.swing.border.TitledBorder;
 public class View {
 	
 	JPanel p, l, pLabel, pText,valider, gui;
-	JTextField nom, prenom, tel, email, mat, username, res, signaler, matSig, retirerRes;
-	JPasswordField mdp;
+	JTextField nom, prenom, tel, email, mat, username, username1, res, signaler, matSig, retirerRes;
+	JPasswordField mdp, mdp1;
 	JFrame frame, frameLog, frameRes, frameSig;
 	JButton validerCompte, validerInscr, validerRes, validerSig, buttonSig, compte;
 	JLabel validation;
 	
 	User model = new User(0, null, null, null, null, null, null, null);
+	User connecte = new User();//L'utilisateur connect√© en ce moment
 	
 	/**
 	 * @return le mot de passe entre
@@ -146,14 +147,19 @@ public class View {
 		validerCompte.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
-		        frameRes.setVisible(true);
-		        frameLog.setVisible(false);
-		        //JOptionPane.showMessageDialog(frame, "Vous ne possedez pas de compte, veillez vous s'inscrire");
+		        if(DataBase.getUserExist(username.getText(), mdp.getText())) {
+		        	frameRes.setVisible(true);
+			        frameLog.setVisible(false);
+			        connecte = DataBase.getUser(username.getText());
+		        }
+		        else {
+		        	JOptionPane.showMessageDialog(frame, "Vous ne possedez pas de compte ou le mot de passe est incorrect");
+		        }
 		    }
 		});
 		
 		valider.add(validerCompte);
-		compte = new JButton("inscrire un compte");
+		compte = new JButton("Inscrire un compte");
 		compte.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
@@ -191,11 +197,11 @@ public class View {
 		p.add(pText, BorderLayout.CENTER);
 		
 		pLabel.add(new JLabel("Username: "));
-		username = new JTextField(20);
-		pText.add(username);
+		username1 = new JTextField(20);
+		pText.add(username1);
 		pLabel.add(new JLabel("Mot de passe: "));
-		mdp = new JPasswordField(20);
-		pText.add(mdp);
+		mdp1 = new JPasswordField(20);
+		pText.add(mdp1);
 		pLabel.add(new JLabel("Nom: "));
 		nom = new JTextField(20);
 		pText.add(nom);
@@ -208,7 +214,7 @@ public class View {
 		pLabel.add(new JLabel("Email: "));
 		email = new JTextField(20);
 		pText.add(email);
-		pLabel.add(new JLabel("Matricule: "));
+		pLabel.add(new JLabel("Plaque: "));
 		mat = new JTextField(20);
 		pText.add(mat);
 		
@@ -218,6 +224,8 @@ public class View {
 		{
 		    public void actionPerformed(ActionEvent e) {
 		        frame.setVisible(false);
+		        User nouveau = new User(DataBase.getIdUser(), username1.getText(), mdp1.getText(), nom.getText(), prenom.getText(), tel.getText(), email.getText(), mat.getText());
+		        DataBase.addUser(nouveau);
 		    }
 		});
 		valider.add(validerInscr);
@@ -253,17 +261,20 @@ public class View {
 		pText.add(retirerRes);
 		JLabel nomParking = new JLabel("Nom des parking: ");
 		pLabel.add(nomParking);
-		JLabel parking = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking = new JLabel("Baudoin 1er, Parking Agro, Parking croix du sud, Parking Cyclotron, Parking de Lauzelle,");
 		pText.add(parking);
 		pLabel.add(new JLabel(""));
-		JLabel parking2 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking2 = new JLabel("Parking des Sciences, Parking Euler, Parking Grand-Place, Parking Grand-Rue, Parking Halles,");
 		pText.add(parking2);
 		pLabel.add(new JLabel(""));
-		JLabel parking3 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking3 = new JLabel("Parking Leclercq, Parking Les Serres, Parking Magritte, Parking Montesquieu, Parking P14,");
 		pText.add(parking3);
 		pLabel.add(new JLabel(""));
-		JLabel parking4 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking4 = new JLabel("Parking R√©dim√©, Parking Sablon, Parking Sainte-Barbe, Parking Socrate, Parking Wallons,");
 		pText.add(parking4);
+		pLabel.add(new JLabel(""));
+		JLabel parking5 = new JLabel("Parking Vinci, Parking Hocaille");
+		pText.add(parking5);
 		
 		
 		valider = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
@@ -271,7 +282,12 @@ public class View {
 		validerRes.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
-		        //model.reserve(res);
+		    	if(retirerRes.getText().isEmpty()) {
+		        connecte.reserve(DataBase.getParking(res.getText()));
+		    	}
+		    	else {
+		    		connecte.libereReservation(DataBase.getReservation(Integer.parseInt(retirerRes.getText())));
+		    	}
 		    }
 		});
 		valider.add(validerRes);
@@ -310,10 +326,10 @@ public class View {
 			p.add(pLabel, BorderLayout.WEST);
 			p.add(pText, BorderLayout.CENTER);
 			
-			pLabel.add(new JLabel("Matricule du vehicule en effraction: "));
+			pLabel.add(new JLabel("Reservation o√π il y a une infraction : "));
 			matSig = new JTextField(20);
 			pText.add(matSig);
-			pLabel.add(new JLabel("Commentaire: "));
+			pLabel.add(new JLabel("Commentaire (Max 50 caract√®res) : "));
 			signaler = new JTextField(20);
 			signaler.setColumns(10);
 			pText.add(signaler);
@@ -323,7 +339,7 @@ public class View {
 			validerSig.addActionListener(new ActionListener() 
 			{
 			    public void actionPerformed(ActionEvent e) {
-			    	//model.flagV1(null, null);
+			    	connecte.flagV2(DataBase.getReservation(Integer.parseInt(matSig.getText())), signaler.getText());
 			        frameSig.setVisible(false);
 			    }
 			});
@@ -342,9 +358,7 @@ public class View {
 		    frameSig.setVisible(false);
 		    frameSig.setLocation(500, 300);
 	}
-<<<<<<< HEAD
-	
-	
+
 	//vue console
 	public void vueConsole() {
 		 Scanner sc = new Scanner(System.in);
@@ -369,7 +383,7 @@ public class View {
 		    		case "n":
 		    			break;
 		    		default : 
-		    			System.out.println("EntrÈe non valide"); 
+		    			System.out.println("EntrÔøΩe non valide"); 
 		    			break;
 		    		}
 		    		sc3.close();
@@ -381,7 +395,7 @@ public class View {
 		    		
 		    		break;
 		    	default : 
-	    			System.out.println("EntrÈe non valide"); 
+	    			System.out.println("EntrÔøΩe non valide"); 
 	    			break;
 		    	}
 		    	sc2.close();
@@ -409,24 +423,15 @@ public class View {
 		    	case "n":
 		    		break;
 		    	default : 
-	    			System.out.println("EntrÈe non valide"); 
+	    			System.out.println("EntrÔøΩe non valide"); 
 	    			break;
 		    	}
 		    	sc4.close();
 		    break;
 		    default : 
-    			System.out.println("EntrÈe non valide"); 
+    			System.out.println("EntrÔøΩe non valide"); 
     			break;
 		    }
 		    sc.close();
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-	}
-=======
->>>>>>> c70c868cf1ba689fc4f8b903b7922e1ecc48cd34
-	
-	
+	}	
   }
