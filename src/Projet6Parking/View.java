@@ -117,6 +117,8 @@ public class View implements Observer{
 		return validerRes;
 	}
 	
+	
+	//interface de base, le log-in qui va soit vers la reservation, soit sur l'inscription du compte
 	public void init() {
 		
 		p = new JPanel(new BorderLayout(5, 5));
@@ -168,8 +170,11 @@ public class View implements Observer{
 	    frameLog.setVisible(true);
 	    frameLog.setLocation(500, 300);
 	    
+	   
 	}
 	
+	
+	//interface d'inscription
 	public void parkingInscr() {
 
 	    p = new JPanel(new BorderLayout(5, 5));
@@ -225,6 +230,7 @@ public class View implements Observer{
 	   
 	}
 	
+	//interface de la reservation qui soit valide la reservation soit retire la reservation soit va dans l'interface de signalisation
 	public void parkingReservation(){
 	    p = new JPanel(new BorderLayout(5, 5));
 		pLabel = new JPanel(new GridLayout(0, 1, 3, 3));
@@ -245,6 +251,12 @@ public class View implements Observer{
 		pLabel.add(new JLabel(""));
 		JLabel parking2 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
 		pText.add(parking2);
+		pLabel.add(new JLabel(""));
+		JLabel parking3 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		pText.add(parking3);
+		pLabel.add(new JLabel(""));
+		JLabel parking4 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		pText.add(parking4);
 		
 		
 		valider = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
@@ -281,6 +293,9 @@ public class View implements Observer{
 	    frameRes.setLocation(500, 300);
 	}
 	
+	
+	
+	//interface de signalisation
 	public void parkingSignaler() {
 		    p = new JPanel(new BorderLayout(5, 5));
 			pLabel = new JPanel(new GridLayout(0, 1, 3, 3));
@@ -320,11 +335,87 @@ public class View implements Observer{
 		    frameSig.setVisible(false);
 		    frameSig.setLocation(500, 300);
 	}
+	
+	
+	//vue console
+	public void vueConsole() {
+		 Scanner sc = new Scanner(System.in);
+		    System.out.println("Avez vous un compte ? y/n (y = oui, n = non)");
+		    switch(sc.nextLine()) {
+		    case "y" : 
+		    	System.out.println("Votre nom d'utilisateur ?");
+		    	model.setUsername(sc.nextLine());
+		    	System.out.println("Votre mot de passe ?");
+		    	model.setMdp(sc.nextLine());
+		    	Scanner sc2 = new Scanner(System.in);
+		    	System.out.println("Voulez vous reserver ou signaler? r/s (r = reserver, s = signaler)");
+		    	switch(sc2.nextLine()) {
+		    	case "r":
+		    		System.out.println("Reservation");
+		    		System.out.println(sc2.nextLine());
+		    		Scanner sc3 = new Scanner(System.in);
+		    		System.out.println("Voulez vous enlever une reservation ? y/n (y = oui, n = non)");
+		    		switch(sc3.nextLine()) {
+		    		case "y":
+		    			System.out.println("Tapez la reservation a enleve");
+		    		case "n":
+		    			break;
+		    		default : 
+		    			System.out.println("Entrée non valide"); 
+		    			break;
+		    		}
+		    		sc3.close();
+		    		break;
+		    	case "s":
+		    		System.out.println("Matricule du vehicule en effraction");
+		    		System.out.println(sc2.nextLine());
+		    		System.out.println("Commentaire ?");
+		    		
+		    		break;
+		    	default : 
+	    			System.out.println("Entrée non valide"); 
+	    			break;
+		    	}
+		    	sc2.close();
+		    	break;
+		    case "n" : 
+		    	Scanner sc4 = new Scanner(System.in);
+		    	System.out.println("Voulez vous creer un compte ? y/n (y = oui, n = non)");
+		    	switch(sc4.nextLine()) {
+		    	case "y":
+		    		System.out.println("Taper votre nom d'utilisateur");
+		    		model.setUsername(sc4.nextLine());
+		    		System.out.println("Tapez votre mdp");
+		    		model.setMdp(sc4.nextLine());
+		    		System.out.println("Tapez votre nom");
+		    		model.setName(sc4.nextLine());
+		    		System.out.println("Tapez votre prenom");
+		    		model.setFirstName(sc4.nextLine());
+		    		System.out.println("Tapez votre numero de telephone");
+		    		model.setPhone(sc4.nextLine());
+		    		System.out.println("Tapez votre mail");
+		    		model.setMail(sc4.nextLine());
+		    		System.out.println("Tapez votre plaque d'immatriculation");
+		    		model.setPlate(sc4.nextLine());
+		    		break;
+		    	case "n":
+		    		break;
+		    	default : 
+	    			System.out.println("Entrée non valide"); 
+	    			break;
+		    	}
+		    	sc4.close();
+		    break;
+		    default : 
+    			System.out.println("Entrée non valide"); 
+    			break;
+		    }
+		    sc.close();
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		System.out.println("test");
 	}
 	
 	
