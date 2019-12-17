@@ -1,0 +1,62 @@
+	Connection cn4 = null;
+	Statement st4 = null;
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		cn4 = DriverManager.getConnection(url, login, mdp);
+		st4 = cn4.createStatement();
+		
+		String sql = "";
+		st4.executeUpdate(sql);
+	} catch(SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			cn4.close();
+			st4.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+	Connection cn4 = null;
+	Statement st4 = null;
+	ResultSet rs4 = null;
+	retour=;
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		cn4 = DriverManager.getConnection(url, login, mdp);
+		st4 = cn4.createStatement();
+		
+		String sql = "";
+		rs4 = st4.executeQuery(sql);
+		if(rs4.first()) {
+			retour = ;
+		}
+		//else {
+		//	System.out.println("Aucun resultat");
+		//}
+	} catch(SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			cn4.close();
+			st4.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return retour;
+
+
+INSERT INTO `reservation`(`idReservation`, `idPlace`, `idUser`) VALUES (" +  + "," +  + "," +  + ")
+
+
+
+accentéèà

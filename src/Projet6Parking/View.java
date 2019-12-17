@@ -1,12 +1,9 @@
 package Projet6Parking;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -18,7 +15,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class View implements Observer{
+/**
+ * Classe permettant de realiser l'affichage de l'interface graphique et console 
+ * du programme
+ * 
+ * @author LUK Brian
+ * @version 2019/12/17
+ */
+public class View {
 	
 	JPanel p, l, pLabel, pText,valider, gui;
 	JTextField nom, prenom, tel, email, mat, username, res, signaler, matSig, retirerRes;
@@ -29,92 +33,95 @@ public class View implements Observer{
 	
 	User model = new User(0, null, null, null, null, null, null, null);
 	
-	public JPanel getP() {
-		return p;
-	}
-
-	public JPanel getpLabel() {
-		return pLabel;
-	}
-
-	public JPanel getpText() {
-		return pText;
-	}
-	
+	/**
+	 * @return le mot de passe entre
+	 */
 	public JPasswordField getMdp() {
 		return mdp;
 	}
 
+	/**
+	 * @return le nom
+	 */
 	public JTextField getNom() {
 		return nom;
 	}
 
+	/**
+	 * @return le prenom
+	 */
 	public JTextField getPrenom() {
 		return prenom;
 	}
 
+	/**
+	 * @return le numero de telephone
+	 */
 	public JTextField getTel() {
 		return tel;
 	}
 
+	/**
+	 * @return l'adresse email entree
+	 */
 	public JTextField getEmail() {
 		return email;
 	}
 
+	/**
+	 * @return le numero de matricule
+	 */
 	public JTextField getMat() {
 		return mat;
 	}
 
+	/**
+	 * @return action de valider 
+	 */
 	public JPanel getValider() {
 		return valider;
 	}
 
-	public JPanel getGui() {
-		return gui;
-	}
-
-	public JFrame getFrame() {
-		return frame;
-	}
-
+	/**
+	 * @return action de valider une inscription
+	 */
 	public JButton getValiderInscr() {
 		return validerInscr;
 	}
 	
+	/**
+	 * @return le compte
+	 */
 	public JButton getCompte() {
 		return compte;
 	}
 	
+	/**
+	 * @return action de validation
+	 */
 	public JLabel getValidation() {
 		return validation;
 	}
 
-	public JPanel getL() {
-		return l;
-	}
-
+	/**
+	 * @return le nom d'utilisateur
+	 */
 	public JTextField getUsername() {
 		return username;
 	}
 
+	/**
+	 * @return le resultat renvoye
+	 */
 	public JTextField getRes() {
 		return res;
 	}
 
-	public JFrame getFrameLog() {
-		return frameLog;
-	}
-
-	public JFrame getFrameRes() {
-		return frameRes;
-	}
-
+	/**
+	 * @return action de valider le compte
+	 */
 	public JButton getValiderCompte() {
 		return validerCompte;
-	}
-
-	public JButton getValiderRes() {
-		return validerRes;
 	}
 	
 	
@@ -335,6 +342,7 @@ public class View implements Observer{
 		    frameSig.setVisible(false);
 		    frameSig.setLocation(500, 300);
 	}
+<<<<<<< HEAD
 	
 	
 	//vue console
@@ -417,6 +425,8 @@ public class View implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 	}
+=======
+>>>>>>> c70c868cf1ba689fc4f8b903b7922e1ecc48cd34
 	
 	
   }
