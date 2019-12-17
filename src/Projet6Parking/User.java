@@ -3,7 +3,7 @@ import java.util.*;
 import Projet6Parking.DataBase;
 
 /**
- * @author he201676
+ * @author DE LEENER Nathan , LUK Brian
  *
  */
 public class User {
