@@ -26,6 +26,8 @@ public class User {
 	 * 
 	 * @param idUser    : l'id de l'utilisateur
 	 * @param name      : nom de l'utilisateur
+	 * @param username : nom d'utilisateur
+	 * @param mdp : mot de passe de l'utilisateur
 	 * @param firstName : Prenom de l'utilisateur
 	 * @param phone     : numero de telephone de l'utilisateur
 	 * @param mail      : email de l'utilisateur
