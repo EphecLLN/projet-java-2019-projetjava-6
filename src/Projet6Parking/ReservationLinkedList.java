@@ -72,6 +72,35 @@ public class ReservationLinkedList {
 		return retour.reservation;
 	}
 	
+	
+	/**
+	 * Retire une reservation de la structure chainee
+	 * @param r la reservation a enlever
+	 */
+	public void suppresReservation(Reservation r) {
+		if(first.reservation.equals(r)) { //Si c'est le premier le bon
+			first=first.next;
+		}
+		else if(last.reservation.equals(r)) { //Si c'est le dernier
+			Node parcours = first;
+			while(parcours.next!=last) {
+				parcours=parcours.next;
+			}
+			last=parcours;
+			parcours.next=null;
+		}
+		else { //Si c'est un autre de la structure
+			Node previous=first;
+			Node current = first.next;
+			while(!current.reservation.equals(r)) {//On avance jusqu'au noeud desire
+				previous=current;
+				current=current.next;
+			}
+			previous.next=current.next;
+			
+		}
+	}
+	
 	/**
 	 * Dis si la liste chainee est vide
 	 * @return true si pas d'element dans la structure chainee de reservation, false sinon
@@ -99,5 +128,6 @@ public class ReservationLinkedList {
 		retour+=parcours.reservation.toString();
 		return retour;
 	}
+	
 
 }

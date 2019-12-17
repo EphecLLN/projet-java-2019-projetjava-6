@@ -51,6 +51,13 @@ public class Offence {
 		date = d;
 	}
 	
+	/**
+	 * Cree une offence vide pour pouvoir la completer avec les get et set
+	 */
+	public Offence() {
+		idOffence=-1;
+	}
+
 
 	//Getters & Setters
 	/**
@@ -156,7 +163,7 @@ public class Offence {
 	 * @return une offence et ses donn�es
 	 */
 	public String toString() {
-		return "Offence N� " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date;
+		return "Offence N° " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date + " raison : " + this.comment;
 	}
 
 }

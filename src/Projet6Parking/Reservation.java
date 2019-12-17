@@ -27,7 +27,14 @@ public class Reservation {
 		this.user = user;
 	}
 
-	
+	/**
+	 * Constructeur vide pour pouvoir creer un objet dans a classe DataBase sans avoir des erreurs d'initialisation
+	 */
+	public Reservation() {
+		idReservation=-1;
+	}
+
+
 	//Getters & Setters 
 	/**
 	 * @return the idReservation
@@ -81,6 +88,21 @@ public class Reservation {
 	 */
 	public String toString() {
 		return "Reservation N° : " + this.idReservation + ",\n\t place : [" + this.place + "],\n\t utilisateur : [" + this.user + "]";
+	}
+	
+	/**
+	 * Compare 2 reservations pour dire si ce sont les memes sur base de leur id
+	 * @return true si les 2 reservations ont le meme id, false sinon
+	 */
+	public boolean equals(Object o) {
+		if(this==null || o==null) {
+			return false;
+		}
+		if(o.getClass()!=this.getClass()) {
+			return false;
+		}
+		Reservation r = (Reservation) o;
+		return this.getIdReservation()==r.getIdReservation();
 	}
 
 }

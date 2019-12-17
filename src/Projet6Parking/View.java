@@ -25,13 +25,14 @@ import javax.swing.border.TitledBorder;
 public class View {
 	
 	JPanel p, l, pLabel, pText,valider, gui;
-	JTextField nom, prenom, tel, email, mat, username, res, signaler, matSig, retirerRes;
-	JPasswordField mdp;
+	JTextField nom, prenom, tel, email, mat, username, username1, res, signaler, matSig, retirerRes;
+	JPasswordField mdp, mdp1;
 	JFrame frame, frameLog, frameRes, frameSig;
 	JButton validerCompte, validerInscr, validerRes, validerSig, buttonSig, compte;
 	JLabel validation;
 	
 	User model = new User(0, null, null, null, null, null, null, null);
+	User connecte = new User();//L'utilisateur connecté en ce moment
 	
 	/**
 	 * @return le mot de passe entre
@@ -124,6 +125,8 @@ public class View {
 		return validerCompte;
 	}
 	
+	
+	//interface de base, le log-in qui va soit vers la reservation, soit sur l'inscription du compte
 	public void init() {
 		
 		p = new JPanel(new BorderLayout(5, 5));
@@ -144,14 +147,19 @@ public class View {
 		validerCompte.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
-		        frameRes.setVisible(true);
-		        frameLog.setVisible(false);
-		        //JOptionPane.showMessageDialog(frame, "Vous ne possedez pas de compte, veillez vous s'inscrire");
+		        if(DataBase.getUserExist(username.getText(), mdp.getText())) {
+		        	frameRes.setVisible(true);
+			        frameLog.setVisible(false);
+			        connecte = DataBase.getUser(username.getText());
+		        }
+		        else {
+		        	JOptionPane.showMessageDialog(frame, "Vous ne possedez pas de compte ou le mot de passe est incorrect");
+		        }
 		    }
 		});
 		
 		valider.add(validerCompte);
-		compte = new JButton("inscrire un compte");
+		compte = new JButton("Inscrire un compte");
 		compte.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
@@ -175,8 +183,11 @@ public class View {
 	    frameLog.setVisible(true);
 	    frameLog.setLocation(500, 300);
 	    
+	   
 	}
 	
+	
+	//interface d'inscription
 	public void parkingInscr() {
 
 	    p = new JPanel(new BorderLayout(5, 5));
@@ -186,11 +197,11 @@ public class View {
 		p.add(pText, BorderLayout.CENTER);
 		
 		pLabel.add(new JLabel("Username: "));
-		username = new JTextField(20);
-		pText.add(username);
+		username1 = new JTextField(20);
+		pText.add(username1);
 		pLabel.add(new JLabel("Mot de passe: "));
-		mdp = new JPasswordField(20);
-		pText.add(mdp);
+		mdp1 = new JPasswordField(20);
+		pText.add(mdp1);
 		pLabel.add(new JLabel("Nom: "));
 		nom = new JTextField(20);
 		pText.add(nom);
@@ -203,7 +214,7 @@ public class View {
 		pLabel.add(new JLabel("Email: "));
 		email = new JTextField(20);
 		pText.add(email);
-		pLabel.add(new JLabel("Matricule: "));
+		pLabel.add(new JLabel("Plaque: "));
 		mat = new JTextField(20);
 		pText.add(mat);
 		
@@ -213,6 +224,8 @@ public class View {
 		{
 		    public void actionPerformed(ActionEvent e) {
 		        frame.setVisible(false);
+		        User nouveau = new User(DataBase.getIdUser(), username1.getText(), mdp1.getText(), nom.getText(), prenom.getText(), tel.getText(), email.getText(), mat.getText());
+		        DataBase.addUser(nouveau);
 		    }
 		});
 		valider.add(validerInscr);
@@ -232,6 +245,7 @@ public class View {
 	   
 	}
 	
+	//interface de la reservation qui soit valide la reservation soit retire la reservation soit va dans l'interface de signalisation
 	public void parkingReservation(){
 	    p = new JPanel(new BorderLayout(5, 5));
 		pLabel = new JPanel(new GridLayout(0, 1, 3, 3));
@@ -247,11 +261,20 @@ public class View {
 		pText.add(retirerRes);
 		JLabel nomParking = new JLabel("Nom des parking: ");
 		pLabel.add(nomParking);
-		JLabel parking = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking = new JLabel("Baudoin 1er, Parking Agro, Parking croix du sud, Parking Cyclotron, Parking de Lauzelle,");
 		pText.add(parking);
 		pLabel.add(new JLabel(""));
-		JLabel parking2 = new JLabel("Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,Parking baudoin,");
+		JLabel parking2 = new JLabel("Parking des Sciences, Parking Euler, Parking Grand-Place, Parking Grand-Rue, Parking Halles,");
 		pText.add(parking2);
+		pLabel.add(new JLabel(""));
+		JLabel parking3 = new JLabel("Parking Leclercq, Parking Les Serres, Parking Magritte, Parking Montesquieu, Parking P14,");
+		pText.add(parking3);
+		pLabel.add(new JLabel(""));
+		JLabel parking4 = new JLabel("Parking Rédimé, Parking Sablon, Parking Sainte-Barbe, Parking Socrate, Parking Wallons,");
+		pText.add(parking4);
+		pLabel.add(new JLabel(""));
+		JLabel parking5 = new JLabel("Parking Vinci, Parking Hocaille");
+		pText.add(parking5);
 		
 		
 		valider = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 2));
@@ -259,7 +282,12 @@ public class View {
 		validerRes.addActionListener(new ActionListener() 
 		{
 		    public void actionPerformed(ActionEvent e) {
-		        //model.reserve(res);
+		    	if(retirerRes.getText().isEmpty()) {
+		        connecte.reserve(DataBase.getParking(res.getText()));
+		    	}
+		    	else {
+		    		connecte.libereReservation(DataBase.getReservation(Integer.parseInt(retirerRes.getText())));
+		    	}
 		    }
 		});
 		valider.add(validerRes);
@@ -288,6 +316,9 @@ public class View {
 	    frameRes.setLocation(500, 300);
 	}
 	
+	
+	
+	//interface de signalisation
 	public void parkingSignaler() {
 		    p = new JPanel(new BorderLayout(5, 5));
 			pLabel = new JPanel(new GridLayout(0, 1, 3, 3));
@@ -295,10 +326,10 @@ public class View {
 			p.add(pLabel, BorderLayout.WEST);
 			p.add(pText, BorderLayout.CENTER);
 			
-			pLabel.add(new JLabel("Matricule du vehicule en effraction: "));
+			pLabel.add(new JLabel("Reservation où il y a une infraction : "));
 			matSig = new JTextField(20);
 			pText.add(matSig);
-			pLabel.add(new JLabel("Commentaire: "));
+			pLabel.add(new JLabel("Commentaire (Max 50 caractères) : "));
 			signaler = new JTextField(20);
 			signaler.setColumns(10);
 			pText.add(signaler);
@@ -308,7 +339,7 @@ public class View {
 			validerSig.addActionListener(new ActionListener() 
 			{
 			    public void actionPerformed(ActionEvent e) {
-			    	//model.flagV1(null, null);
+			    	connecte.flagV2(DataBase.getReservation(Integer.parseInt(matSig.getText())), signaler.getText());
 			        frameSig.setVisible(false);
 			    }
 			});
@@ -327,6 +358,93 @@ public class View {
 		    frameSig.setVisible(false);
 		    frameSig.setLocation(500, 300);
 	}
-	
-	
+
+	//vue console
+	public void vueConsole() {
+		 Scanner sc = new Scanner(System.in);
+		    System.out.println("Avez vous un compte ? y/n (y = oui, n = non)");
+		    switch(sc.nextLine()) {
+		    case "y" : 
+		    	System.out.println("Votre nom d'utilisateur ?");
+		    	model.setUsername(sc.nextLine());
+		    	System.out.println("Votre mot de passe ?");
+		    	model.setMdp(sc.nextLine());
+		    	if(DataBase.getUserExist(model.getUsername(), model.getMdp())) { //Si l'utilisateur existe
+		    		connecte=DataBase.getUser(model.getUsername());
+		    		System.out.println("Vous etes bien connecte");
+			    	Scanner sc2 = new Scanner(System.in);
+			    	System.out.println("Voulez vous reserver, signaler ou liberer? r/s/l (r = reserver, s = signaler, l = liberer)");
+			    	switch(sc2.nextLine()) {
+			    	case "r":
+			    		System.out.println("Entrez le nom du parking");
+			    		System.out.println("Baudoin 1er, Parking Agro, Parking croix du sud, Parking Cyclotron, Parking de Lauzelle, Parking des Sciences, Parking Euler, Parking Grand-Place, Parking Grand-Rue, Parking Halles, Parking Leclercq,");
+			    		System.out.println("Parking Les Serres, Parking Magritte, Parking Montesquieu, Parking P14, Parking Rédimé, Parking Sablon, Parking Sainte-Barbe, Parking Socrate, Parking Wallons, Parking Vinci, Parking Hocaille");
+			    		Scanner sc5 = new Scanner(System.in);
+			    		connecte.reserve(DataBase.getParking(sc5.nextLine()));
+			    		sc5.close();
+			    		break;
+			    	case "s":
+			    		int nR;
+			    		String co;
+			    		System.out.println("Reservation ou a lieu l'infraction");
+			    		Scanner sc7 = new Scanner(System.in);
+			    		nR=Integer.parseInt(sc7.nextLine());
+			    		System.out.println("Commentaire ?");
+			    		co=sc7.nextLine();
+			    		connecte.flagV2(DataBase.getReservation(nR), co);
+			    		sc7.close();
+			    		break;
+			    	case "l":
+			    		System.out.println("Tapez le numero de la reservation a enleve");
+			    		Scanner sc6 = new Scanner(System.in);
+			    		connecte.libereReservation(DataBase.getReservation(Integer.parseInt(sc6.nextLine())));
+			    		sc6.close();
+			    		break;
+			    	default : 
+		    			System.out.println("Entree non valide, redemarrez le programme"); 
+		    			break;
+			    	}
+			    	sc2.close();
+			    	break;
+		    	}
+		    	else { //Si l'utilisateur n'exite pas ou le mot de passe est incorrect
+		    		System.out.println("Cet utilisateur n'existe pas ou le mot de passe est incorrect");
+		    	}
+		    case "n" : 
+		    	Scanner sc4 = new Scanner(System.in);
+		    	System.out.println("Voulez vous creer un compte ? y/n (y = oui, n = non)");
+		    	switch(sc4.nextLine()) {
+		    	case "y":
+		    		System.out.println("Taper votre nom d'utilisateur");
+		    		model.setUsername(sc4.nextLine());
+		    		System.out.println("Tapez votre mdp");
+		    		model.setMdp(sc4.nextLine());
+		    		System.out.println("Tapez votre nom");
+		    		model.setName(sc4.nextLine());
+		    		System.out.println("Tapez votre prenom");
+		    		model.setFirstName(sc4.nextLine());
+		    		System.out.println("Tapez votre numero de telephone");
+		    		model.setPhone(sc4.nextLine());
+		    		System.out.println("Tapez votre mail");
+		    		model.setMail(sc4.nextLine());
+		    		System.out.println("Tapez votre plaque d'immatriculation");
+		    		model.setPlate(sc4.nextLine());
+		    		model.setIdUser(DataBase.getIdUser());
+		    		DataBase.addUser(model);
+		    		System.out.println("Vous avez bien ete ajoute a la base de donnee, relancez le programme");
+		    		break;
+		    	case "n":
+		    		break;
+		    	default : 
+	    			System.out.println("Entree non valide, redemarrez le programme"); 
+	    			break;
+		    	}
+		    	sc4.close();
+		    break;
+		    default : 
+    			System.out.println("Entree non valide, redemarrez le programme"); 
+    			break;
+		    }
+		    sc.close();
+	}	
   }
