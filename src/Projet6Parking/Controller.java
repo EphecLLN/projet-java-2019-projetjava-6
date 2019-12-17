@@ -2,12 +2,15 @@ package Projet6Parking;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import Projet6Parking.User;
+
+/**
+ * @author LUK Brian
+ * @version 2019/12/17
+ */
 
 public class Controller implements ActionListener{
 	
@@ -27,7 +30,6 @@ public class Controller implements ActionListener{
 		this.email = email;
 		this.mat = mat;
 		this.validerInscr = validerInscr;
-	
 	}
 
 	@Override
@@ -39,10 +41,7 @@ public class Controller implements ActionListener{
 		model.setFirstName(prenom.getText());
 		model.setPhone(tel.getText());
 		model.setMail(email.getText());
-		model.setPlate(mat.getText());
-		
+		model.setPlate(mat.getText());		
 	}
-
-
 }
 

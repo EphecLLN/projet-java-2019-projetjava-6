@@ -78,7 +78,10 @@ public class ParkingLinkedList {
 	}
 
 
-	
+	/**
+	 * Retourne l'ensemble de la strucuture chainee sous forme d'un string en changeant de ligne a chaque parking
+	 * @return les parkings sous forme de string
+	 */
 	public String toString() {
 		Node parcours = first;
 		String retour = "";

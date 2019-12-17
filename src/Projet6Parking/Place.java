@@ -16,7 +16,7 @@ public class Place {
 	private boolean booked;		//Etat de la reservation de la place 
 	
 	//Constructeur
-	/**Defini une place avec son id, son numero et le parking auquel elle appartient, par default la place n'est pas r�serv�e
+	/**Defini une place avec son id, son numero et le parking auquel elle appartient, par default la place n'est pas reservee
 	 * 
 	 * @param idPlace l'id de la place dans la DB
 	 * @param parking le parking auquel la place appartient
@@ -114,5 +114,4 @@ public class Place {
 	public String toString() {
 		return "Place Numero : " + this.number + " du \n\t\tparking : [" + this.parking + "] est prise : " + this.booked;
 	}
-
 }

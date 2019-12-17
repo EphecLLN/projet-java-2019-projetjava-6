@@ -4,7 +4,7 @@ package Projet6Parking;
  * Classe Reservation permettant de gerer les reservations de places de parking
  * faites par les utilisateurs
  * 
- * @author GORTZ Gaëtan
+ * @author GORTZ Gaetan
  * @version 2019/12/17
  */
 public class Reservation {
@@ -104,5 +104,4 @@ public class Reservation {
 		Reservation r = (Reservation) o;
 		return this.getIdReservation()==r.getIdReservation();
 	}
-
 }

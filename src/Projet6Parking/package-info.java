@@ -1,6 +1,6 @@
 /**
- * Ce package contient l'ensemble des classes utilisées pour la réalisation de l'application
- * permettant de gérer les réservations pour les parkings étudiants. 
+ * Ce package contient l'ensemble des classes utilisees pour la realisation de l'application
+ * permettant de gerer les reservations pour les parkings etudiants. 
  *
  * <ul>
  * <li> La classe <code>Parking.java</code></li>

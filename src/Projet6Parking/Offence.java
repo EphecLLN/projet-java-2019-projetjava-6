@@ -1,10 +1,10 @@
 /** Ceci est la classe Offence qui represente une infraction dans l'utilisation des parkings.
  * Chaque Offence se voit attribuee un numero unique afin de pouvoir identifier facilement les objets
- * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 250c permet de decrire le d�lit
- * Une Offence se refaire a une Place et donc a un Parking, ainsi qu'une date
+ * Une Offence concerne 2 users, celui en tort et celui qui signale. Un commentaire de max 50c permet de decrire le delit
+ * Une Offence se refere a une Place et donc a un Parking, ainsi qu'une date
  * 
  * 
- * @author gaeta_2b6psqs
+ * @author GORTZ Gaetan
  * @date 11-11-19
  */
 
@@ -28,7 +28,7 @@ public class Offence {
 	 * 
 	 * @param idOffence l'id de l'offence de la DB
 	 * @param signal le User qui signale l'infraction
-	 * @param flag le User qui a comis l'infraction
+	 * @param flag le User qui a commis l'infraction
 	 * @param com le commentaire sur l'infraction (max 50caracteres)
 	 * @param p la Place de Parking ou a eu lieue l'infraction
 	 * @param d la Date a laquelle l'infraction a eu lieue
@@ -160,10 +160,9 @@ public class Offence {
 	/**
 	 * Retourne une offence sous forme de String pour l'afficher en console
 	 * 
-	 * @return une offence et ses donn�es
+	 * @return une offence et ses donnees
 	 */
 	public String toString() {
 		return "Offence N° " + this.idOffence + " signaleur : (" + this.userSignal + "), fautif : (" + this.userFlagged + "), place : " + this.place + ", date : " + this.date + " raison : " + this.comment;
 	}
-
 }

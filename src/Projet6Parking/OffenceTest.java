@@ -1,17 +1,11 @@
-/**
- * 
- */
 package Projet6Parking;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 
 /**
- * @author gaeta_2b6psqs
- *
+ * @author GORTZ Gaetan
  */
 class OffenceTest {
 
@@ -41,5 +35,4 @@ class OffenceTest {
 		assertEquals(commentCourt2,test3.getComment());
 		
 	}
-
 }

@@ -1,17 +1,14 @@
 package Projet6Parking;
-
-
 /**
  * Structure chainee permettant d'enregistrer les modifications faites sur les reservations
  * 
- * @author GORTZ Gaëtan
+ * @author GORTZ Gaetan
  * @version 2019-12-17
  */
 public class ReservationLinkedList {
 	
 	/**
 	 * Classe permettant de creer un Node necessaire a la structure chainee
-	 *
 	 */
 	private class Node{
 		private Reservation reservation;
@@ -61,7 +58,6 @@ public class ReservationLinkedList {
 		}
 	}
 	
-	
 	/**
 	 * Retire le premier element de la structure chainee
 	 * @return la premiere reservation de la structure chainee
@@ -97,7 +93,6 @@ public class ReservationLinkedList {
 				current=current.next;
 			}
 			previous.next=current.next;
-			
 		}
 	}
 	
@@ -128,6 +123,4 @@ public class ReservationLinkedList {
 		retour+=parcours.reservation.toString();
 		return retour;
 	}
-	
-
 }

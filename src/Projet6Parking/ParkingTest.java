@@ -1,10 +1,6 @@
-/**
- * 
- */
 package Projet6Parking;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 /**
@@ -66,5 +62,4 @@ class ParkingTest {
 		assertEquals(284, test3.getPlacesTot());
 		assertEquals(284, test3.getPlacesDispo());
 	}
-
 }

@@ -1,6 +1,5 @@
 package Projet6Parking;
 import java.sql.*;
-import java.util.Date;
 
 /**
  * Classe faisant le lien avec la base de donnee
@@ -18,12 +17,7 @@ public class DataBase {
 	private static String login = "root";
 	private static String mdp = "";
 
-//Serveur omg
-	//private static String url = "jdbc:mysql://localhost/projetparking";
-	//private static String login = "root";
-	//private static String mdp = "";
-
-//---INITIALISATION STRUCTURE CHAINEE---	
+//---INITIALISATION DES STRUCTURES CHAINEES---	
 	/**
 	 * Initialise les differents listes de donnees
 	 */
@@ -33,7 +27,6 @@ public class DataBase {
 		reservations = new ReservationLinkedList();
 		getAllReservation();
 	}
-
 
 
 //---GET ALL OBJECTS IN DB---	
@@ -70,7 +63,7 @@ public class DataBase {
 	}
 	
 	/**
-	 * Recuperes toutes les reservations de la db pour les mettre dans la structure chainee correspondante
+	 * Recupere toutes les reservations de la db pour les mettre dans la structure chainee correspondante
 	 */	
 	public static void getAllReservation() {
 		Connection cn1 = null;
@@ -108,7 +101,7 @@ public class DataBase {
 
 //---GET OBJECT IN DB---	
 	/**
-	 * Recupere un utilisateur dans la base de donnee sur base de son nom
+	 * Recupere un utilisateur dans la base de donnee sur base de son id
 	 * @param id L'id de l'user que l'on veut
 	 * @return le premier user ayant l'id donne
 	 */	
@@ -140,7 +133,6 @@ public class DataBase {
 			try {
 				cn2.close();
 				st2.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -149,7 +141,7 @@ public class DataBase {
 	}
 	
 	/**
-	 * retourne le premier utilisateur ayant le username fournit en parametre
+	 * Retourne le premier utilisateur ayant le username fournit en parametre
 	 * @param username le username du user qu'on cherche
 	 * @return le premier user ayant cet username la
 	 */
@@ -181,7 +173,6 @@ public class DataBase {
 			try {
 				cn20.close();
 				st20.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -221,7 +212,6 @@ public class DataBase {
 			try {
 				cn3.close();
 				st3.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -261,7 +251,6 @@ public class DataBase {
 			try {
 				cn4.close();
 				st4.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -270,9 +259,9 @@ public class DataBase {
 	}
 	
 	/**
-	 * Retourne le parking ayant le nom passé en argument
+	 * Retourne le parking ayant le nom passe en argument
 	 * @param parkingName le nom du parking que l'on veut
-	 * @return le parking ayant le nom passé en argument
+	 * @return le parking ayant le nom passe en argument
 	 */
 	public static Parking getParking(String parkingName) {
 		Connection cn4 = null;
@@ -301,7 +290,6 @@ public class DataBase {
 			try {
 				cn4.close();
 				st4.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -341,7 +329,6 @@ public class DataBase {
 			try {
 				cn15.close();
 				st15.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -466,7 +453,7 @@ public class DataBase {
 	
 	/**
 	 * Ajoute une penalite a l'utilisateur donne
-	 * @param idUser l'utilisateur à qui il faut ajouter une penalite
+	 * @param idUser l'utilisateur a qui il faut ajouter une penalite
 	 */
 	public static void addPenalty(int idUser) {
 		Connection cn16 = null;
@@ -490,14 +477,9 @@ public class DataBase {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	
+	}	
 
 
-private static int getPenalty(int idUser) {
-		return getUser(idUser).getPenalty();
-	}
 
 
 
@@ -533,7 +515,6 @@ private static int getPenalty(int idUser) {
 			try {
 				cn5.close();
 				st5.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -542,7 +523,7 @@ private static int getPenalty(int idUser) {
 	}
 
 	/**
-	 * Retourne le premier id que peut prendre un User
+	 * Retourne le premier id que peut prendre un user
 	 * @return le premier id que peut prendre un user
 	 */
 	public static int getIdUser() {
@@ -572,7 +553,6 @@ private static int getPenalty(int idUser) {
 			try {
 				cn19.close();
 				st19.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -612,7 +592,6 @@ private static int getPenalty(int idUser) {
 			try {
 				cn6.close();
 				st6.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -621,8 +600,8 @@ private static int getPenalty(int idUser) {
 	}
 	
 	/**
-	 * Retourne le premier Id que peut prendre une r�servation
-	 * @return le premier id que peut prendre la r�servation
+	 * Retourne le premier id que peut prendre une reservation
+	 * @return le premier id que peut prendre la reservation
 	 */
 	public static int getIdReservation() {
 		Connection cn7 = null;
@@ -651,7 +630,6 @@ private static int getPenalty(int idUser) {
 			try {
 				cn7.close();
 				st7.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -660,9 +638,9 @@ private static int getPenalty(int idUser) {
 	}
 	
 	/**
-	 * Retourne le nombre de place disponible dans le parking donn�
+	 * Retourne le nombre de place disponible dans le parking donne
 	 * @param p le parking dont on veut le nombre de place dispo
-	 * @return le nombre de place dispo dans le parking donn�
+	 * @return le nombre de place dispo dans le parking donne
 	 */
 	private static int getPlaceDispo(Parking p) {
 		Connection cn12 = null;
@@ -728,14 +706,12 @@ private static int getPenalty(int idUser) {
 			try {
 				cn15.close();
 				st15.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return retour;
 	}
-	
 	
 	/**
 	 * Permet de verifier lors de la connexion si le user est deja dans la base de donnee et si son mot de passe est correct
@@ -756,8 +732,8 @@ private static int getPenalty(int idUser) {
 
 			String sql = "SELECT * FROM users WHERE users.username='" + username + "'";
 			rs17 = st17.executeQuery(sql);
-			if(rs17.first()) {
-				return(rs17.getString("mdp").contentEquals(password));
+			if(rs17.first()) { //Il y a un user avec ce nom la
+				return(rs17.getString("mdp").contentEquals(password)); //On regarde si le mdp fournit correspond au mdp de la base de donnee
 			}
 			else {
 				return false; //Pas d'user avec ce nom la
@@ -770,7 +746,6 @@ private static int getPenalty(int idUser) {
 			try {
 				cn17.close();
 				st17.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -778,13 +753,24 @@ private static int getPenalty(int idUser) {
 		return retour;
 	}
 	
+	/**
+	 * Retourne le nombre de penalite de l'user dont on a passe l'id 
+	 * @param idUser l'id du user dont on veut le nombre de penalite
+	 * @return le nombre de penalite du user
+	 */
+	private static int getPenalty(int idUser) {
+		return getUser(idUser).getPenalty();
+	}
+	
+	
+	
 	
 	
 	
 //---ADD DATA TO DB
 	/**
-	 * Ajoute la place pl dans la base de donn�e
-	 * @param pl La place a ajout� dans la DB
+	 * Ajoute la place pl dans la base de donnee
+	 * @param pl La place a ajoute dans la DB
 	 */
 	public static void addPlace(Place pl) {
 		Connection cn8 = null;
@@ -894,21 +880,16 @@ private static int getPenalty(int idUser) {
 		}	
 	}
 	
-	
-
 
 //---A TRIER---
 
-	
-
-
 //---MAIN---
 	/**
-	 * Permet de tester les differentes methodes au-dessus
+	 * A permis de tester les differentes methodes creees au-dessus
 	 * @param args rien
 	 */
 	public static void main(String[] args) {
-		initialisationDonnees();
+		//initialisationDonnees();
 		//System.out.println(parkings);
 		//System.out.println(reservations);
 		//User u = getUser(3);
@@ -943,27 +924,7 @@ private static int getPenalty(int idUser) {
 		//System.out.println(getIdUser());
 		//User n = new User(26,"Gae","gaet","Gaet","gaet","0478262700","get.g@fmai.com","87tc3");
 		//addUser(n);
-		System.out.println(getParking(3));
-		System.out.println(getParking(getParking(3).getName()));
-		
+		//System.out.println(getParking(3));
+		//System.out.println(getParking(getParking(3).getName()));	
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

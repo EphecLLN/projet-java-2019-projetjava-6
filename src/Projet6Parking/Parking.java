@@ -1,13 +1,10 @@
 package Projet6Parking;
-import java.util.*;
-import Projet6Parking.*;
 
 /**
  * Classe permettant de definir des parkings et les methodes qui leurs sont associees
  * 
  * @author Nathan DE LEENER - HE201742
  * @version 2019/11/14
- *
  */
 public class Parking {
 	
@@ -182,6 +179,4 @@ public class Parking {
 	public String toString() {
 		return "Parking N° : " + this.idParking + ", nom : " + this.name + " situe " + this.position + " a " + this.placesDispo +" places dispos sur " + this.placesTot + " et est " + this.type;
 	}
-	
-  
 }

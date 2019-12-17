@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,7 +31,7 @@ public class View {
 	JLabel validation;
 	
 	User model = new User(0, null, null, null, null, null, null, null);
-	User connecte = new User();//L'utilisateur connecté en ce moment
+	User connecte = new User();//L'utilisateur connecte en ce moment
 	
 	/**
 	 * @return le mot de passe entre
@@ -135,10 +134,10 @@ public class View {
 		p.add(pLabel, BorderLayout.WEST);
 		p.add(pText, BorderLayout.CENTER);
 		
-		pLabel.add(new JLabel("Nom d'utilisateur: "));
+		pLabel.add(new JLabel("Nom d'utilisateur : "));
 		username = new JTextField(20);
 		pText.add(username);
-		pLabel.add(new JLabel("Mot de passe: "));
+		pLabel.add(new JLabel("Mot de passe : "));
 		mdp = new JPasswordField(20);
 		pText.add(mdp);
 		

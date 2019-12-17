@@ -217,7 +217,7 @@ public class User {
 			System.out.println("Il vous reste " + (3 - nbPen) + "chance(s).");
 		} else if (nbPen > 3) {
 			penalty = nbPen;
-			System.out.println("Vous avez plus acces au reservation.");
+			System.out.println("Vous n'avez plus acces au reservation.");
 		}
 	}
 
@@ -238,14 +238,13 @@ public class User {
 	 * @param p Le parking dans lequel l'utilisateur veut reserver
 	 */
 	public void reserve(Parking p) {
-		// verif si encore place dispo
-		if (p.getPlacesDispo() < 1) {
+		if (p.getPlacesDispo() < 1) { //verif si encore place dispo
 			System.out.println("Plus de place disponible");
 		}
-		else if(this.getPenalty()>=3) {
+		else if(this.getPenalty()>=3) { //verif si l'utilisateur n'a pas trop de penalites
 			System.out.println("Vous avez trop de penalite, vous ne pouvez plus faire de reservation");
 		}
-		else { // Encore de la place de libre
+		else { // Encore de la place de libre et pas trop de penalite
 			Place pl = new Place(DataBase.getIdPlace(), p, DataBase.getNumberPlace(p));
 			DataBase.addPlace(pl);
 			Reservation r = new Reservation(DataBase.getIdReservation(), pl, this);
@@ -267,10 +266,10 @@ public class User {
 	public void libereReservation(Reservation r) {
 		Place pl = r.getPlace();
 		Parking pa = pl.getParking();
-		if (!this.equals(r.getUser())) {
+		if (!this.equals(r.getUser())) { //Verifie que la reservation appartient bien a l'utilisateur
 			System.out.println("Vous ne pouvez pas liberer une place que vous n'avez pas reservee");
 		}
-		else if (pl.isBooked()) {
+		else if (pl.isBooked()) { //Verifie si la place n'a pas deja ete liberee
 			System.out.println("La place n'est pas reservee");
 		} else {
 			pa.setPlacesDispo(pa.getPlacesDispo() + 1);
@@ -325,34 +324,4 @@ public class User {
 				+ " " + this.firstName + ", tel : " + this.phone + ", mail : " + this.mail + ", plaque : " + this.plate
 				+ ", nombre de penalite : " + this.penalty;
 	}
-
-//--PEUT ETRE INUTILE---
-	/*	
-		*//**
-			 * Permet de liberer une place de parking
-			 * 
-			 * @param p La place qu'on veut liberer
-			 */
-	/*
-	 * public void liberePlace(Place p) { if(p.isFree()) {
-	 * System.out.println("La place n'est pas reservee"); }
-	 * 
-	 * verifier si la reservation est bien à l'utilisateur
-	 * 
-	 * else { Parking pa = p.getParking(); pa.setPlacesDispo(pa.getPlacesDispo()+1);
-	 * p.setBooked(true); } }
-	 * 
-	 * 
-	 *//**
-		 * Permet de signaler un utilisateur
-		 * 
-		 * @param pl  la place ou a lieu l'infraction
-		 * @param com la raison de l'infraction
-		 *//*
-			 * public void flagV1(Place pl, String com) { Date d = new Date(); //Aller
-			 * chercher l'utilisateur User userF = new User(2,"NathDL", "mdp", "Nath",
-			 * "DL","0478262700", "he201742@students.ephec.be", "1gfp497"); Offence of = new
-			 * Offence(1, this, userF, com, pl, d); //Ajouter une penalite a l'utilisateur
-			 * userF.addPenalty(); }
-			 */
 }
